@@ -45,30 +45,27 @@ const Login = ({navigation}: {navigation: any})=>
             </View>
             <View style={styles.signSocialAccContainer}>
                 <TouchableOpacity style={styles.signButtonAcc}>
-                    <Icon 
-                    style={styles.iconAcc}
-                    name={'apple'}>
-                    </Icon>
-                    <Text>Apple</Text>
+                <Image 
+                source={require('../../assets/apple-logo.png')} 
+                style={styles.socialLogo}/>
+                    <Text style={styles.labelSocial}>Apple</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.signButtonAcc}>
-                    <Icon 
-                     style={styles.iconAcc}
-                    name={'facebook'}>
-                    </Icon>
-                    <Text>Facebook</Text>
+                    <Image 
+                    source={require('../../assets/fb-logo.png')} 
+                    style={styles.socialLogo}/>
+                    <Text style={styles.labelSocial}>Facebook</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.signButtonAcc}>
-                    <Icon 
-                     style={styles.iconAcc}
-                    name={'google'}>
-                    </Icon>
-                    <Text>Google</Text>
+                    <Image 
+                    source={require('../../assets/google-logo.png')} 
+                    style={styles.socialLogo}/>
+                    <Text style={styles.labelSocial}>Google</Text>
                 </TouchableOpacity>
             </View>
-            <Pressable style={styles.buttonSign} onPress={()=>{}}>
+            <TouchableOpacity style={styles.buttonSign} onPress={()=>{}}>
             <Text style={styles.buttonText}>Sign in</Text>
-            </Pressable>
+            </TouchableOpacity>
             <View style={styles.footer}>
                 <View style={styles.lastTextContainer}>
                 <Text style={styles.lastText}>Don't have an account? </Text>
@@ -107,6 +104,7 @@ const styles = StyleSheet.create(
             height:'25%',
             width:'25%'
         },
+       
         welcomeText:
         {
             color: colorHighlight,
@@ -187,11 +185,16 @@ const styles = StyleSheet.create(
             color:'#a9a9a9'
 
         },
+        socialLogo:
+        {
+            height:25,
+            width:25
+        },
         signSocialAccContainer:
         {
             display:'flex',
             flexDirection:'row',
-            width:'70%',
+            width:300,
             justifyContent:'space-between',
             height:36
         },
@@ -204,11 +207,16 @@ const styles = StyleSheet.create(
             borderRadius:8,
             borderStyle:'solid',
             borderColor:colorBorder,
-            width:'30%',
+            width:92,
             alignItems:'center',
-            height:50,
-            padding:5,
+            height:46,
+            padding:2,
             backgroundColor:'white'
+        },
+        labelSocial:{
+            marginTop:2,
+            fontSize:11,
+            color:colorTitle
         },
         iconAcc:
         {
