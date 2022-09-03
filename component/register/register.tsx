@@ -2,9 +2,9 @@ import { StyleSheet, Text, View,Image,TextInput, Button,  Platform, StatusBar,Pr
 import {MaterialCommunityIcons as Icon} from '@expo/vector-icons'
 import { useState } from 'react';
 
-const colorTitle  = "rgba(151, 151, 151, 1)";
+const colorLabel  = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
-const colorHighlight = "rgba(35, 161, 255, 1)"
+const colorTitle = "rgba(35, 161, 255, 1)"
 
 const Register = ({navigation}: {navigation: any})=>
 {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create(
         },
         welcomeText:
         {
-            color: colorHighlight,
+            color: colorTitle,
             fontSize:35,
             fontWeight:'700',
             width:'83%',
@@ -140,7 +140,7 @@ const styles = StyleSheet.create(
         },
         labelInput:
         {
-            color:colorTitle,
+            color:colorLabel,
             marginLeft:10,
             marginRight:10,
             fontSize:13,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create(
         },
         lableInputIcon:
         {
-            color:colorTitle,
+            color:colorLabel,
             marginLeft:10,
             marginRight:10,
             fontSize:13,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create(
         labelSocial:{
             marginTop:2,
             fontSize:11,
-            color:colorTitle
+            color:colorLabel
         },
         iconAcc:
         {
@@ -270,7 +270,7 @@ const styles = StyleSheet.create(
         lastTextLink:
         {
             fontSize:17,
-            color:colorHighlight,
+            color:colorTitle,
             fontWeight:'500' 
         },
         separateZone:
