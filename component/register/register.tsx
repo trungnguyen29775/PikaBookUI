@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,TextInput, Button,  Platform, StatusBar,Pressable, TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View,Image,SafeAreaView,TextInput, Button,  Platform, StatusBar,Pressable, TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
 import {MaterialCommunityIcons as Icon} from '@expo/vector-icons'
 import { useState } from 'react';
 
@@ -10,7 +10,7 @@ const Register = ({navigation}: {navigation: any})=>
 {
     const [viewPassword,setViewPassword] = useState(false)
     return(
-        <View style={styles.signContainer}>
+        <SafeAreaView style={styles.signContainer}>
             <Image 
             source={require('../../assets/logo.jpg')} 
             style={styles.logo}/>
@@ -93,7 +93,7 @@ const Register = ({navigation}: {navigation: any})=>
                 </View>
                
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 const styles = StyleSheet.create(

@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View,Image,TextInput, Button,  Platform, StatusBar,Pressable, TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View,Image,SafeAreaView,TextInput, Button,  Platform, StatusBar,Pressable, TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
 import {MaterialCommunityIcons as Icon} from '@expo/vector-icons'
 import { useState } from 'react';
+
 
 const colorLabel  = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
@@ -10,7 +11,7 @@ const Login = ({navigation}: {navigation: any})=>
 {
     const [viewPassword,setViewPassword] = useState(false)
     return(
-        <View style={styles.signContainer}>
+        <SafeAreaView style={styles.signContainer}>
             <Image 
             source={require('../../assets/logo.jpg')} 
             style={styles.logo}/>
@@ -69,7 +70,7 @@ const Login = ({navigation}: {navigation: any})=>
             <View style={styles.footer}>
                 <View style={styles.lastTextContainer}>
                 <Text style={styles.lastText}>Don't have an account? </Text>
-                <TouchableOpacity onPress={()=> navigation.navigate('Register')}>
+                <TouchableOpacity onPress={()=> navigation.navigate('MainScreenOldUser')}>
                 <Text style={styles.lastTextLink}>
                     Register 
                 </Text>
@@ -83,7 +84,7 @@ const Login = ({navigation}: {navigation: any})=>
                 </View>
                
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 const styles = StyleSheet.create(
