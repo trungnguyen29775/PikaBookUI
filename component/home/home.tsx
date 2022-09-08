@@ -8,24 +8,7 @@ const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)"
 const colorList = "rgba(177, 222, 255, 1)"
-const DATA = [
-    {
-      title: "Main dishes",
-      data: ["Pizza", "Burger", "Risotto"]
-    },
-    {
-      title: "Sides",
-      data: ["French Fries", "Onion Rings", "Fried Shrimps"]
-    },
-    {
-      title: "Drinks",
-      data: ["Water", "Coke", "Beer"]
-    },
-    {
-      title: "Desserts",
-      data: ["Cheese Cake", "Ice Cream"]
-    }
-  ];
+
 const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 {
     useEffect(()=>
@@ -50,6 +33,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             ),
             headerStyle:{
                 backgroundColor: 'rgba(246, 251, 255, 1)',
+                
             },
             headerBackVisible:false,
             headerTitleAlign:'center'
@@ -58,6 +42,20 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
     })
     return(
         <View style={{flex: 1}}>
+            <SafeAreaView style={styles.navBar}>
+            <TouchableOpacity>
+            <Icon name='menu' style={styles.navBarIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text>Home</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <Image 
+                    source={require('../../assets/avt.jpg')}
+                    style={styles.avatar}
+                    />
+            </TouchableOpacity>
+        </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
             <View style={styles.findBookZone}>
                 <Text style={styles.zoneTitle}>Find Awesome Books!</Text>
@@ -459,6 +457,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                 </ScrollView>
             </View>
         </ScrollView>
+        {/* Footer */}
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav}>
             <Icon name='home-outline' style={styles.footerNavIconActive}/>
@@ -488,6 +487,21 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 const styles = StyleSheet.create
 (
     {
+        navBar:{
+            display:'flex',
+            flexDirection:'row',
+            width:'100%',
+            justifyContent:'space-between',
+            backgroundColor:'rgba(246, 251, 255, 1)',
+            alignItems:'center',
+            height:Platform.OS ==='ios'? 80: 60,
+            padding:20,
+        },
+        navBarIcon:
+        {
+            fontSize:20,
+            color:colorTitle
+        },
         mainScreenContainer:
         {
             height:'100%',
@@ -544,17 +558,14 @@ const styles = StyleSheet.create
             display:'flex',
             flexDirection:'column',
             width:'100%',
-            height:260,
-            justifyContent:'space-around',
+            height:270,
         },
         lastBookContainer:
         {
             display:'flex',
             flexDirection:'row',
             width:'100%',
-            height:180,
-            marginTop:5,
-            marginBottom:20,
+            height:220,
             alignItems:'center'
         },
         lisLastBookContainer:
@@ -587,7 +598,7 @@ const styles = StyleSheet.create
             shadowRadius: 4.65,
             
             elevation: 6,
-            
+            marginBottom:14
         },
         bookMarkIcon:
         {
@@ -746,32 +757,7 @@ const styles = StyleSheet.create
             marginRight:10,
             fontSize:15
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //Footer
         footer:
         {
             display:'flex',
