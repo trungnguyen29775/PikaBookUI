@@ -1,11 +1,31 @@
-import { StyleSheet, Text, View,Image,TextInput, Button,  Platform, StatusBar,Pressable, TouchableWithoutFeedback,TouchableOpacity,ScrollView,SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, Button,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
+import {AntDesign as AntDesign} from '@expo/vector-icons'
+
 import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)"
 const colorList = "rgba(177, 222, 255, 1)"
+const DATA = [
+    {
+      title: "Main dishes",
+      data: ["Pizza", "Burger", "Risotto"]
+    },
+    {
+      title: "Sides",
+      data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+    },
+    {
+      title: "Drinks",
+      data: ["Water", "Coke", "Beer"]
+    },
+    {
+      title: "Desserts",
+      data: ["Cheese Cake", "Ice Cream"]
+    }
+  ];
 const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 {
     useEffect(()=>
@@ -88,6 +108,356 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+            <View style={styles.mainRecommendBookContainer}>
+                <View style={styles.headerRecommendZone}>
+                    <Text style={styles.zoneTitle}>Recommend for you</Text>
+                    <TouchableOpacity>
+                    <Text style={styles.seeAll}>See All</Text>
+
+                    </TouchableOpacity>
+                </View>
+                <ScrollView horizontal={true}>
+                    
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>                                           
+                    
+                </ScrollView>
+            </View>
+            <View style={styles.mainRecommendBookContainer}>
+                <View style={styles.headerRecommendZone}>
+                    <Text style={styles.zoneTitle}>Recent books</Text>
+                    <TouchableOpacity>
+                    <Text style={styles.seeAll}>See All</Text>
+
+                    </TouchableOpacity>
+                </View>
+                <ScrollView horizontal={true}>
+                    
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.lastBookInfomation}>
+                    <Text style={styles.bookTitle}>The sky above us</Text>
+                    <Text style={styles.authorBook}>John Green</Text>
+                    <View style={styles.viewsBookContainer}>
+                        <View style={styles.chapterContainer}>
+                        <Icon
+                        name='list'/>
+                        <Text style={styles.chapterBook}>25 chapters</Text>
+                        </View>
+                        <Text style={styles.viewsBook}>2.5k views</Text>
+                    </View>
+                    </View>
+                    
+                    <View style={styles.starBookContainer}>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='star' style={styles.starIcon}/>
+                    <AntDesign name='staro'  style={styles.starIcon}/>
+                    <AntDesign name='staro'style={styles.starIcon}/>
+
+                    </View>
+                    </TouchableOpacity>                                           
+                    
+                </ScrollView>
+            </View>
         </ScrollView>
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav}>
@@ -124,8 +494,8 @@ const styles = StyleSheet.create
             width:'100%',
             display:'flex',
             backgroundColor:'rgba(246, 251, 255, 1)',
-            flex:1,
-            padding:20
+            padding:20,
+            flex:1
         },
         avatar:
         {
@@ -136,7 +506,7 @@ const styles = StyleSheet.create
         headerTitle:
         {
             color:colorTitle,
-            fontSize:20
+            fontSize:17
         },
         findBookZone:
         {
@@ -148,7 +518,7 @@ const styles = StyleSheet.create
         zoneTitle:
         {
             color:colorTitle,
-            fontSize:23,
+            fontSize:24,
             fontWeight:'700'
         },
         seachZone:
@@ -170,12 +540,12 @@ const styles = StyleSheet.create
         },
         continueReadingZone:
         {
-            marginTop:20,
+            marginTop:15,
             display:'flex',
             flexDirection:'column',
             width:'100%',
-            height:300,
-            justifyContent:'space-around'
+            height:260,
+            justifyContent:'space-around',
         },
         lastBookContainer:
         {
@@ -183,8 +553,9 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             height:180,
+            marginTop:5,
+            marginBottom:20,
             alignItems:'center'
-
         },
         lisLastBookContainer:
         {
@@ -194,14 +565,15 @@ const styles = StyleSheet.create
         },
         lastBookPoster:
         {
-            height:'100%',
-            width:'31%',
+            height:180,
+            width:140,
+            marginBottom:15
         },
         lastBook:
         {
-            width:'69%',
-            padding:10,
-            height:'92%',
+            width:'63.5%',
+            padding:8,
+            height:166,
             display:'flex',
             justifyContent:'space-around',
             alignItems:'center',
@@ -224,14 +596,13 @@ const styles = StyleSheet.create
             top:-3,
             right:0,
             marginRight:10,
-            fontSize:30
+            fontSize:25
         },
         lastBookInfomation:
         {
-            marginTop:13,
             display:'flex',
             justifyContent:'space-around',
-            height:80,
+            height:70,
             width:'100%'
         },
         bookTitle:
@@ -266,7 +637,8 @@ const styles = StyleSheet.create
             width:'70%',
             backgroundColor:'rgba(34, 83, 120, 1)',
             height:'100%',
-            borderRadius:7,
+            borderTopLeftRadius:7,
+            borderBottomLeftRadius:7
         },
         lastBookButton:
         {
@@ -306,13 +678,74 @@ const styles = StyleSheet.create
             backgroundColor:colorTitle,
             borderRadius:4
         },
-
-
-
-
-
-
-
+        mainRecommendBookContainer:
+        {
+            height:410
+        },
+        headerRecommendZone:
+        {
+            display:'flex',
+            width:'100%',
+            justifyContent:'space-between',
+            flexDirection:'row',
+            marginBottom:20,
+            alignItems:'center'
+        },
+        seeAll:
+        {
+            color:colorTitle,
+            fontSize:12,
+            fontWeight:'600'
+        },
+        bookContainer:
+        {
+            height:330,
+            width:180,
+            backgroundColor:'white',
+            paddingTop:20,
+            paddingBottom:10,
+            paddingLeft:5,
+            paddingRight:5,
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 2.62,
+            
+            elevation: 2,
+            display:'flex',
+            alignItems:'center',
+            borderRadius:10,
+            marginRight:30
+        },
+        viewsBookContainer:
+        {
+            display:'flex',
+            width:'100%',
+            justifyContent:'space-between',
+            flexDirection:'row'
+        },
+        viewsBook:
+        {
+            color:colorLabel,
+            fontSize:10
+        },
+        starBookContainer:
+        {
+            width:'100%',
+            display:'flex',
+            flexDirection:'row',
+            paddingRight:'25%',
+            marginTop:8
+        },
+        starIcon:
+        {
+            color:colorMark,
+            marginRight:10,
+            fontSize:15
+        },
 
 
 
