@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
-
 import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
@@ -9,13 +8,13 @@ const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 const colorBackgroundBook = "rgba(224, 241, 255, 1)"
-const colorText = "rgba(78, 78, 78, 1)"
+const colorText = "rgba(78, 78, 78, 1)";
 const BookDetails = ({navigation}: {navigation: any}) =>
 {
     return(
         <View style={{flex:1}}>
             <SafeAreaView style={styles.navBar}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> navigation.navigate('MainScreenOldUser')}>
                     <AntDesign name='arrowleft' style={styles.navBarBack}/>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -68,7 +67,7 @@ const BookDetails = ({navigation}: {navigation: any}) =>
             </View>
             </ScrollView>
             <SafeAreaView style={styles.footer}>
-            <TouchableOpacity><Text>Continue</Text></TouchableOpacity>
+            
          </SafeAreaView>
         </View>
     )
@@ -219,9 +218,13 @@ const styles = StyleSheet.create
             alignItems:'center',
             height:80,
             padding:5,
-            
-            
+              
         },
+        footerBackgroundImage:{
+            height:'100%',
+            width:'100%'
+        },
+
     }
 );
 

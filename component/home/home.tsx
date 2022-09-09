@@ -438,7 +438,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
             <Icon name='chatbox' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
@@ -474,7 +474,8 @@ const styles = StyleSheet.create
         navBarIcon:
         {
             fontSize:23,
-            marginLeft:20
+            marginLeft:20,
+            color:colorTitle
         },
         navTitle:
         {

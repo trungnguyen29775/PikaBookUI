@@ -5,6 +5,7 @@ import Login from './component/login/login';
 import Register from './component/register/register';
 import MainScreenOldUser from './component/home/home';
 import BookDetails from './component/bookDetails/bookDetails';
+import ChatScreen from './component/chatScreen/chatScreen';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -29,6 +30,11 @@ export default function App() {
        <Stack.Screen 
       name="BookDetails" 
       component={BookDetails} 
+      options={{headerShown: false}}
+       />
+       <Stack.Screen 
+      name="ChatScreen" 
+      component={ChatScreen} 
       options={{headerShown: false}}
        />
     </Stack.Navigator>
