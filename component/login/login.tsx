@@ -64,13 +64,13 @@ const Login = ({navigation}: {navigation: any})=>
                     <Text style={styles.labelSocial}>Google</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.buttonSign} onPress={()=>{}}>
+            <TouchableOpacity style={styles.buttonSign} onPress={()=> navigation.navigate('MainScreenOldUser')} >
             <Text style={styles.buttonText}>Sign in</Text>
             </TouchableOpacity>
             <View style={styles.footer}>
                 <View style={styles.lastTextContainer}>
                 <Text style={styles.lastText}>Don't have an account? </Text>
-                <TouchableOpacity onPress={()=> navigation.navigate('MainScreenOldUser')}>
+                <TouchableOpacity onPress={()=> navigation.navigate('Register')}>
                 <Text style={styles.lastTextLink}>
                     Register 
                 </Text>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,TextInput, Button,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 
@@ -6,40 +6,11 @@ import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
-const colorMark = "rgba(251, 188, 5, 1)"
-const colorList = "rgba(177, 222, 255, 1)"
+const colorMark = "rgba(251, 188, 5, 1)";
+const colorList = "rgba(177, 222, 255, 1)";
 
 const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 {
-    useEffect(()=>
-    {
-        navigation.setOptions({
-            headerLeft:()=>
-            (
-                <TouchableOpacity>
-                <Icon name="menu" size={25} color={colorTitle}/>
-                </TouchableOpacity>
-            ),
-            headerTitle:()=>(
-                <TouchableOpacity><Text style={styles.headerTitle}>Home</Text></TouchableOpacity>
-            ),
-            headerRight: () => (
-                <TouchableOpacity>
-                <Image 
-                    source={require('../../assets/avt.jpg')}
-                    style={styles.avatar}
-                    />
-                </TouchableOpacity>
-            ),
-            headerStyle:{
-                backgroundColor: 'rgba(246, 251, 255, 1)',
-                
-            },
-            headerBackVisible:false,
-            headerTitleAlign:'center'
-        }
-        )
-    })
     return(
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.navBar}>
@@ -47,7 +18,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             <Icon name='menu' style={styles.navBarIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text>Home</Text>
+                <Text style={styles.navTitle}>Home</Text>
             </TouchableOpacity>
             <TouchableOpacity>
             <Image 
@@ -116,7 +87,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                 </View>
                 <ScrollView horizontal={true}>
                     
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -492,15 +463,30 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-between',
-            backgroundColor:'rgba(246, 251, 255, 1)',
+            backgroundColor:'rgba(245, 245, 245, 1)',
             alignItems:'center',
-            height:Platform.OS ==='ios'? 80: 60,
-            padding:20,
+            paddingTop: Platform.OS ==='ios'? 0:  StatusBar.currentHeight,
+            
+            borderWidth:0.2,
+            elevation: 6,
+            height:Platform.OS ==='ios'? 100:80,
         },
         navBarIcon:
         {
-            fontSize:20,
-            color:colorTitle
+            fontSize:23,
+            marginLeft:20
+        },
+        navTitle:
+        {
+            color:colorTitle,
+            fontSize:15
+        },
+        avatar:
+        {
+            height:35,
+            width:35,
+            borderRadius:20,
+            marginRight:20
         },
         mainScreenContainer:
         {
@@ -510,12 +496,6 @@ const styles = StyleSheet.create
             backgroundColor:'rgba(246, 251, 255, 1)',
             padding:20,
             flex:1
-        },
-        avatar:
-        {
-            height:35,
-            width:35,
-            borderRadius:20
         },
         headerTitle:
         {
