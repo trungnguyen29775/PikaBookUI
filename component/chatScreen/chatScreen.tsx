@@ -59,7 +59,7 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
             </View>
             
             <View style={styles.userGroupContainer}>
-                <TouchableOpacity style={styles.groupsContainer}>
+                <TouchableOpacity style={styles.groupsContainer} onPress={()=> navigation.navigate('ChatRoom')}>
                     <Image
                     source={require('../../assets/avt-group.jpg')}
                     style={styles.avtGroup}
@@ -175,7 +175,7 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-between',
-            backgroundColor:'rgba(245, 245, 245, 1)',
+            backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
             paddingTop: Platform.OS ==='ios'? 0:  StatusBar.currentHeight,
             
@@ -316,12 +316,12 @@ const styles = StyleSheet.create
             shadowColor: "#000",
             shadowOffset: {
                 width: 0,
-                height: 2,
+                height: 1,
             },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
+            shadowOpacity: 0.18,
+            shadowRadius: 1.00,
             
-            elevation: 5,
+            elevation: 2,
             marginTop:15,
             marginBottom:10
         },
@@ -397,7 +397,7 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-around',
-            backgroundColor:'white',
+            backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
             height:Platform.OS ==='ios'? 80: 60,
             padding:5,

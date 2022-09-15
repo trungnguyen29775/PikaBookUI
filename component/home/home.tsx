@@ -463,7 +463,7 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-between',
-            backgroundColor:'rgba(245, 245, 245, 1)',
+            backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
             paddingTop: Platform.OS ==='ios'? 0:  StatusBar.currentHeight,
             
@@ -745,7 +745,7 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-around',
-            backgroundColor:'white',
+            backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
             height:Platform.OS ==='ios'? 80: 60,
             padding:5,
