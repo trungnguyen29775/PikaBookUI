@@ -114,7 +114,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -141,7 +141,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -168,7 +168,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -195,7 +195,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -222,7 +222,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.bookContainer}>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
@@ -248,7 +248,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     <AntDesign name='staro'style={styles.starIcon}/>
 
                     </View>
-                    </TouchableOpacity>                                           
+                    </TouchableOpacity>                                          
                     
                 </ScrollView>
             </View>

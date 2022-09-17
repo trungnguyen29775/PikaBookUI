@@ -23,7 +23,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
     >
         <View style={{flex: 1,backgroundColor:'rgba(246, 251, 255, 1)'}}>
             <SafeAreaView style={styles.navBar}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('ChatScreen')}>
             <AntDesign name='arrowleft' style={styles.navBarIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -128,9 +128,17 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                 </View>
             </View>
         </View>
+        <View style={styles.onChatingMessageContainer}>
+            <View style={styles.onChatingMessage}>
+                <View style={styles.onchatMessageDot}></View>
+                <View style={styles.onchatMessageDot}></View>
+                <View style={styles.onchatMessageDot}></View>
+
+            </View>
+        </View>
         </ScrollView>
         {/* Footer */}
-        <SafeAreaView style={styles.footer}>
+        <View style={styles.footer}>
                 <TouchableOpacity>
                 <FontAwesome name='image' style={styles.footerNavIcon}/>
                 </TouchableOpacity>
@@ -147,12 +155,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
             <TouchableOpacity>
                 <Icon name='send' style={styles.footerNavIcon}/>
             </TouchableOpacity>
-            <View>
-            </View>
-            <View>
-
-            </View>
-        </SafeAreaView>
+        </View>
       </View>
       </KeyboardAvoidingView>
     )
@@ -200,7 +203,8 @@ const styles = StyleSheet.create
             backgroundColor:'rgba(246, 251, 255, 1)',
             padding:20,
             flex:1,
-            flexDirection:'column'
+            flexDirection:'column',
+            paddingBottom:0
         },
         avatarContainer:
         {
@@ -286,7 +290,32 @@ const styles = StyleSheet.create
             marginBottom:23,
             
         },
-        
+        onChatingMessageContainer:{
+            display:'flex',
+            marginBottom:15,
+            width:'100%',
+            paddingLeft:'15%'
+        },
+        onChatingMessage:
+        {
+            backgroundColor:colorBorder,
+            width:38,
+            display:'flex',
+            justifyContent:'space-around',
+            height:15,
+            borderRadius:8,
+            alignItems:'center',
+            flexDirection:'row',
+            paddingLeft:5,
+            paddingRight:5
+        },
+        onchatMessageDot:
+        {
+            height:4,
+            width:4,
+            borderRadius:2,
+            backgroundColor:colorLabel
+        },
         //Footer
         footer:
         {
@@ -296,12 +325,12 @@ const styles = StyleSheet.create
             justifyContent:'space-around',
             backgroundColor:colorOtherUserMessage,
             alignItems:'center',
-            height:Platform.OS ==='ios'? 80: 60,
-           
+            height:65,
+            padding:5
         },
         footerNavIcon:
         {
-            fontSize:21,
+            fontSize:19,
             color:'white'
         },
         footerNavMessageInputContainer:

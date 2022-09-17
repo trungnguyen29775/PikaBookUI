@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
+
+import { LinearGradient } from 'expo-linear-gradient';
+import { rgba } from 'polished'
 import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
@@ -66,9 +69,14 @@ const BookDetails = ({navigation}: {navigation: any}) =>
                 </View>
             </View>
             </ScrollView>
-            <SafeAreaView style={styles.footer}>
-            
-         </SafeAreaView>
+            <LinearGradient
+             colors={[ 'rgba(255,255,255,0)', 'rgba(255, 255, 255, 0.7)', 'rgba(255,255,255,1)']}
+            //  end={{x:1,y:1}}
+            style={styles.footer}>
+                <TouchableOpacity style={styles.continueReadBookDetailButton}>
+                    <Text style={styles.continueReadBookDetailButtonLable}>Continue</Text>
+                </TouchableOpacity>
+            </LinearGradient>
         </View>
     )
 }
@@ -203,6 +211,7 @@ const styles = StyleSheet.create
         {
             width:'100%',
             marginTop:5,
+            marginBottom:45
         },
         descriptionText:{
             fontSize:18,
@@ -214,17 +223,29 @@ const styles = StyleSheet.create
             flexDirection:'row',
             width:'100%',
             justifyContent:'space-around',
-            backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
-            height:80,
+            height:90,
             padding:5,
-              
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
         },
-        footerBackgroundImage:{
-            height:'100%',
-            width:'100%'
+        continueReadBookDetailButton:
+        {
+            backgroundColor:'rgba(103, 189, 254, 1)',
+            height:50,
+            width:204,
+            display:'flex',
+            alignItems:'center',
+            borderRadius:10
         },
-
+        continueReadBookDetailButtonLable:
+        {
+            lineHeight:50,
+            color:'white',
+            fontSize:20
+        }
     }
 );
 
