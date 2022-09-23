@@ -52,55 +52,13 @@ const NewUserChatScreen = ({navigation}: {navigation: any}) =>
             </View>
             <TouchableOpacity style={styles.button}><Text style={styles.buttonLabel}>Auto Matching</Text></TouchableOpacity>
         </View>
-        <View style={styles.groupsZoneContainer}>
-            <View style={styles.headerContainer}>
-                <Text style={styles.headerTitle}>Your groups</Text>
-                <TouchableOpacity><Text style={styles.seeAll}>See Alls</Text></TouchableOpacity>
-            </View>
-            
-            <View style={styles.userGroupContainer}>
-                <TouchableOpacity style={styles.groupsContainer} onPress={()=> navigation.navigate('ChatRoom')}>
-                    <Image
-                    source={require('../../assets/avt-group.jpg')}
-                    style={styles.avtGroup}
-                    />
-                        <View style={styles.nameAndStatusGroupContainer}>
-                        <View style={styles.headerMatchContainer}>
-                        <Text style={styles.nameOfGroup}>Sun and Moon</Text>
-                        <MaterialCommunityIcons name='check-decagram' style={styles.nameGroupCheckIcon}/>
-                        </View>
-                        <Text style={styles.textStatusGroup}>Sunny just sent the emotion</Text>
-                        </View>
-                 
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.groupsContainer}>
-                    <Image
-                    source={require('../../assets/avt-group2.jpg')}
-                    style={styles.avtGroup}
-                    />
-                   <View style={styles.nameAndStatusGroupContainer}>
-                        <View style={styles.headerMatchContainer}>
-                        <Text style={styles.nameOfGroup}>Badtrip</Text>
-                        <MaterialCommunityIcons name='check-decagram' style={styles.nameGroupCheckIcon}/>
-                        </View>
-                        <Text style={styles.textStatusGroup}>You just sent the sticker</Text>
-                        </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.groupsContainer}>
-                    
-                </TouchableOpacity>
-            </View>
-            
-            
-        </View>
 
         {/* Other groups */}
 
         <View style={styles.groupsZoneContainer}>
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}>Other</Text>
-                <TouchableOpacity><Text style={styles.seeAll}>See Alls</Text></TouchableOpacity>
+                <TouchableOpacity><Text style={styles.seeAll}>See All</Text></TouchableOpacity>
             </View>
             
             <View style={styles.userGroupContainer}>
@@ -130,10 +88,6 @@ const NewUserChatScreen = ({navigation}: {navigation: any}) =>
                         </View>
                         <TouchableOpacity style={styles.joinGroupContainer}><Text style={styles.joinGroupText}>Join group</Text></TouchableOpacity>
                         </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.groupsContainer}>
-                    
                 </TouchableOpacity>
             </View>
             
@@ -310,7 +264,7 @@ const styles = StyleSheet.create
         userGroupContainer:
         {
             width:'100%',
-            height:250,
+            height:500,
             backgroundColor:'white',
             borderRadius:10,
             shadowColor: "#000",
@@ -332,7 +286,7 @@ const styles = StyleSheet.create
             borderBottomWidth:1.5,
             borderBottomColor:"rgba(224, 241, 255, 1)",
             flexDirection:'row',
-            flex:1,
+            height:85,
             alignItems:'center',
             paddingRight:13,
             paddingLeft:13
