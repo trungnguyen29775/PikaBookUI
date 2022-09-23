@@ -285,7 +285,7 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
             <Icon name='home-outline' style={styles.footerNavIconActive}/>
             <Text style={styles.footerNavTitleActive}>Home</Text>
             </TouchableOpacity >
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>

@@ -12,6 +12,7 @@ import NewUserChatScreen from './component/chatScreen/chatScreenNewUser';
 import Notifications from './component/notification/notifications';
 import WriteScreenBlank from './component/write/writeScreenBlank';
 import WriteScreen from './component/write/writeScreen';
+import CreateNewBook from './component/write/createNewBook';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -73,6 +74,12 @@ export default function App() {
       component={WriteScreen} 
       options={{headerShown: false}}
        />
+       <Stack.Screen 
+      name="CreateNewBook" 
+      component={CreateNewBook} 
+      options={{headerShown: false}}
+       />
+       
     </Stack.Navigator>
   </NavigationContainer>
   

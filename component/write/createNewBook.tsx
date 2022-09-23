@@ -1,7 +1,12 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList,KeyboardAvoidingView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 import {MaterialCommunityIcons as MaterialCommunityIcons} from '@expo/vector-icons'
+import{FontAwesome5 as FontAwesome5} from '@expo/vector-icons'
+import{Octicons as Octicons} from '@expo/vector-icons'
+import{Entypo as Entypo} from '@expo/vector-icons'
+import{Feather as Feather} from '@expo/vector-icons'
+
 import { useState, useEffect} from 'react';
 import { padding } from 'polished';
 
@@ -12,7 +17,7 @@ const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)"
 const colorCoverBlank = "rgba(34, 83, 120, 0.35)"
-const WriteScreenBlank = ({navigation}: {navigation: any}) =>
+const CreateNewBook = ({navigation}: {navigation: any}) =>
 {
     return(
         <View style={{flex: 1}}>
@@ -21,27 +26,50 @@ const WriteScreenBlank = ({navigation}: {navigation: any}) =>
                     <AntDesign name='arrowleft' style={styles.navBarBack}/>
                 </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.navTitle}>Write</Text>
+                <Text style={styles.navTitle}>Create new book</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-            <Image 
-                    source={require('../../assets/avt.jpg')}
-                    style={styles.avatar}
-                    />
+            <Feather name='x' style={styles.navBarBack}/>
             </TouchableOpacity>
         </SafeAreaView>
+        {/* Main content */}
+        <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{flex:1}}
+    >
         <ScrollView style={styles.mainScreenContainer}>
-            <View style={styles.createBookContainer}>
+        <View style={styles.createBookContainer}>
             <TouchableOpacity style={styles.coverOfBook}>
                 <AntDesign name='plus' style={styles.plusIcon}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=> navigation.navigate('CreateNewBook')}>
-                <Text style={styles.createText}>Create your own book</Text>
+                <Text style={styles.createText}>Choose the cover</Text>
+            </TouchableOpacity>
+            <View style={styles.inputContainer}>
+                <Text style={styles.headerTitle}>
+                    Book title:
+                </Text>
+                <TextInput style={styles.inputTitleZone}>
+
+                </TextInput>
+            </View>
+            <View style={styles.inputContainer}>
+                <Text style={styles.headerTitle}>Book description:</Text>
+                <View style={styles.inputDescriptionZone}>
+                    <TextInput style={styles.inputContent}>
+
+                    </TextInput>
+                </View>
+            </View>
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.createButton}>
+                <Text style={styles.buttonLabel}>Create</Text>
             </TouchableOpacity>
             </View>
+            </View>
            
-
         </ScrollView>
+        </KeyboardAvoidingView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
@@ -89,19 +117,13 @@ const styles = StyleSheet.create
         {
             fontSize:25,
             color:colorTitle,
-            marginLeft:20
+            marginLeft:20,
+            marginRight:20
         },
         navTitle:
         {
             color:colorTitle,
             fontSize:15
-        },
-        avatar:
-        {
-            height:35,
-            width:35,
-            borderRadius:20,
-            marginRight:20
         },
         mainScreenContainer:
         {
@@ -111,14 +133,15 @@ const styles = StyleSheet.create
             backgroundColor:'rgba(246, 251, 255, 1)',
             flex:1,
             flexDirection:'column',
-            padding:30
         },
         createBookContainer:
         {
             height:'100%',
             width:'100%',
             display:'flex',
-            alignItems:'center'
+            alignItems:'center',
+            flexDirection:'column',
+            padding:20
         },
         coverOfBook:
         {
@@ -136,9 +159,82 @@ const styles = StyleSheet.create
         },
         createText:
         {
-            color:colorTitle,
+            color: colorNameGroup,
             fontSize:15,
             marginTop:10
+        },
+        inputContainer:
+        {
+            display:'flex',
+            flexDirection:'column',
+            width:'100%',
+            marginTop:20
+        },
+        headerTitle:
+        {
+            fontSize:16,
+            color:colorNameGroup,
+            marginBottom:5,
+            fontWeight:'700'
+        },
+        inputTitleZone:
+        {
+            width:'100%',
+            height:50,
+            borderWidth:1.5,
+            borderRadius:10,
+            borderColor:colorNameGroup,
+            paddingTop:5,
+            paddingBottom:5,
+            paddingLeft:10,
+            paddingRight:10,
+            textAlign:'justify',
+            color:colorTitle,
+            fontSize:18,
+            fontWeight:'600'
+        },
+        inputDescriptionZone:
+        {
+            width:'100%',
+            height:300,
+            borderWidth:1.5,
+            borderRadius:10,
+            borderColor:colorNameGroup,
+            paddingTop:10,
+            paddingBottom:5,
+            paddingLeft:10,
+            paddingRight:10,
+        },
+        inputContent:
+        {
+            color:colorTitle,
+            fontSize:16,
+            fontWeight:'500',
+            
+        },
+        buttonContainer:
+        {
+            width:'100%',
+            display:'flex',
+            alignItems:'center',
+            paddingBottom:20
+        },
+        createButton:
+        {
+            width:110,
+            display:'flex',
+            alignItems:'center',
+            height:45,
+            backgroundColor:colorTitle,
+            borderRadius:10,
+            marginTop:20
+        },
+        buttonLabel:
+        {
+            lineHeight:45,
+            color:'white',
+            fontSize:16,
+            fontWeight:'600'
         },
         //Footer
         footer:
@@ -192,4 +288,4 @@ const styles = StyleSheet.create
 )
    
 
-export default WriteScreenBlank;
+export default CreateNewBook;

@@ -34,7 +34,7 @@ const WriteScreen = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
         </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
-            <View style={styles.createBookContainer}>
+            <View style={styles.userBookContainer}>
                 <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}>Your book</Text>
                 </View>
@@ -55,10 +55,10 @@ const WriteScreen = ({navigation}: {navigation: any}) =>
                 </TouchableOpacity>
             </View>
             </View>
-           <View>
-           
-           </View>
-
+            <TouchableOpacity style={styles.createBookContainer} onPress={()=> navigation.navigate('CreateNewBook')}>
+                <Text style={styles.headerTitle}>Create new book</Text>
+                <Entypo name='plus' style={styles.headerTitle}/>
+            </TouchableOpacity>
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
@@ -130,13 +130,13 @@ const styles = StyleSheet.create
             flex:1,
             flexDirection:'column',
         },
-        createBookContainer:
+        userBookContainer:
         {
-            height:'100%',
             width:'100%',
             display:'flex',
             alignItems:'center',
-            padding:30,
+            padding:20,
+            paddingTop:15,
             borderBottomWidth:1,
             borderBottomColor:colorCoverBlank
         },
@@ -150,7 +150,8 @@ const styles = StyleSheet.create
         {
             color:colorNameGroup,
             fontSize:16,
-            fontWeight:'700'
+            fontWeight:'700',
+            marginRight:3
         },
         coverOfBook:
         {
@@ -204,6 +205,14 @@ const styles = StyleSheet.create
         {
             fontSize:12,
             color:colorTitle,
+        },
+        createBookContainer:
+        {
+            display:'flex',
+            flexDirection:'row',
+            alignItems:'center',
+            margin:20,
+            marginTop:15,
         },
         //Footer
         footer:

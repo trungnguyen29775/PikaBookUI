@@ -96,7 +96,7 @@ const NewUserChatScreen = ({navigation}: {navigation: any}) =>
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenNewUser')}>
             <Icon name='home-outline' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
