@@ -10,6 +10,8 @@ import ChatScreen from './component/chatScreen/chatScreen';
 import ChatRoom from './component/chatRoom/chatRoom';
 import NewUserChatScreen from './component/chatScreen/chatScreenNewUser';
 import Notifications from './component/notification/notifications';
+import WriteScreenBlank from './component/write/writeScreenBlank';
+import WriteScreen from './component/write/writeScreen';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -61,9 +63,18 @@ export default function App() {
       component={MainScreenNewUser} 
       options={{headerShown: false}}
        />
-       
-       
+       <Stack.Screen 
+      name="WriteScreenBlank" 
+      component={WriteScreenBlank} 
+      options={{headerShown: false}}
+       />
+       <Stack.Screen 
+      name="WriteScreen" 
+      component={WriteScreen} 
+      options={{headerShown: false}}
+       />
     </Stack.Navigator>
   </NavigationContainer>
+  
   );
 }

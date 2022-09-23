@@ -2,9 +2,6 @@ import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableO
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 import {MaterialCommunityIcons as MaterialCommunityIcons} from '@expo/vector-icons'
-import{FontAwesome5 as FontAwesome5} from '@expo/vector-icons'
-import{Octicons as Octicons} from '@expo/vector-icons'
-import{Entypo as Entypo} from '@expo/vector-icons'
 import { useState, useEffect} from 'react';
 import { padding } from 'polished';
 
@@ -15,7 +12,7 @@ const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)"
 const colorCoverBlank = "rgba(34, 83, 120, 0.35)"
-const WriteScreen = ({navigation}: {navigation: any}) =>
+const WriteScreenBlank = ({navigation}: {navigation: any}) =>
 {
     return(
         <View style={{flex: 1}}>
@@ -35,29 +32,14 @@ const WriteScreen = ({navigation}: {navigation: any}) =>
         </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
             <View style={styles.createBookContainer}>
-                <View style={styles.headerContainer}>
-                <Text style={styles.headerTitle}>Your book</Text>
-                </View>
             <TouchableOpacity style={styles.coverOfBook}>
-                <Image source={require('../../assets/book-poster3.jpg')} style={styles.bookPoster}/>
+                <AntDesign name='plus' style={styles.plusIcon}/>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.bookTitle}>The sky above us</Text>
+                <Text style={styles.createText}>Create your own book</Text>
             </TouchableOpacity>
-            <View style={styles.removeEditContainer}>
-                <TouchableOpacity style={styles.actionContainer}>
-                    <MaterialCommunityIcons style={styles.actionRemoveIcon} name='eraser'/>
-                    <Text style={styles.actionRemoveLabel}>Remove</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionContainer}>
-                    <Octicons name='pencil' style={styles.actionEditIcon}/>
-                    <Text style={styles.actionEditLabel}>Edit</Text>
-                </TouchableOpacity>
             </View>
-            </View>
-           <View>
            
-           </View>
 
         </ScrollView>
         {/* Footer */}
@@ -129,81 +111,34 @@ const styles = StyleSheet.create
             backgroundColor:'rgba(246, 251, 255, 1)',
             flex:1,
             flexDirection:'column',
+            padding:30
         },
         createBookContainer:
         {
             height:'100%',
             width:'100%',
             display:'flex',
-            alignItems:'center',
-            padding:30,
-            borderBottomWidth:1,
-            borderBottomColor:colorCoverBlank
-        },
-        headerContainer:
-        {
-            width:'100%',
-            marginBottom:5
-
-        },
-        headerTitle:
-        {
-            color:colorNameGroup,
-            fontSize:16,
-            fontWeight:'700'
+            alignItems:'center'
         },
         coverOfBook:
         {
+            backgroundColor:colorCoverBlank,
             display:'flex',
             alignItems:'center',
             height:180,
             width:140,
         },
-        bookPoster:
+        plusIcon:
         {
-            height:'100%',
-            width:'100%'
+            lineHeight:180,
+            fontSize:25,
+            color:'white'
         },
-        bookTitle:
+        createText:
         {
             color:colorTitle,
             fontSize:15,
             marginTop:10
-        },
-        removeEditContainer:
-        {
-            display:'flex',
-            flexDirection:'row',
-            justifyContent:'space-between',
-            width:100,
-            marginTop:10
-        },
-        actionContainer:
-        {
-            display:'flex',
-            alignItems:'center'
-        },
-        actionRemoveIcon:
-        {
-            fontSize:19,
-            color:'rgba(235, 67, 53, 1)',
-            textDecorationLine:'underline'
-        },
-        actionRemoveLabel:
-        {
-            fontSize:12,
-            color:'rgba(235, 67, 53, 1)',
-        },
-        actionEditIcon:
-        {
-            fontSize:19,
-            color: colorTitle,
-            textDecorationLine:'underline'
-        },
-        actionEditLabel:
-        {
-            fontSize:12,
-            color:colorTitle,
         },
         //Footer
         footer:
@@ -257,4 +192,4 @@ const styles = StyleSheet.create
 )
    
 
-export default WriteScreen;
+export default WriteScreenBlank;

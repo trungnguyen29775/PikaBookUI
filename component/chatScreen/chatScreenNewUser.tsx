@@ -101,7 +101,7 @@ const NewUserChatScreen = ({navigation}: {navigation: any}) =>
             <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav}>
-            <Icon name='pencil' style={styles.footerNavIcon}/>
+            <Icon name='pencil' style={styles.footerNavIcon}onPress={()=> navigation.navigate('WriteScreen')} />
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav}>
