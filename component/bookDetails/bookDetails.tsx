@@ -27,6 +27,9 @@ const BookDetails = ({navigation}: {navigation: any}) =>
             </SafeAreaView>
             <ScrollView>
             <View style={styles.mainScreenContainer}>
+
+                {/* Book Poster, Infomation */}
+
                 <View style={styles.bookContainer}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
@@ -42,6 +45,9 @@ const BookDetails = ({navigation}: {navigation: any}) =>
                             <Text style={styles.chapterBook}>25 chapters</Text>
                         </View>
                     </View>
+
+                    {/* Interaction of book (vote,added,share) */}
+
                     <View style={styles.bookInteraction}>
                         <TouchableOpacity style={styles.interactionContainer}>
                         <Icon name='checkmark-circle' style={styles.interactionIcon}/>
@@ -57,6 +63,9 @@ const BookDetails = ({navigation}: {navigation: any}) =>
                         </TouchableOpacity>
                     </View>
                 </View>
+
+                {/* descripton of book  */}
+
                 <View style={styles.descriptionContainer}>
                     <Text style={styles.headerTitle}>Description:</Text>
                     <View style={styles.descriptionTextContainer}>
@@ -69,9 +78,10 @@ const BookDetails = ({navigation}: {navigation: any}) =>
                 </View>
             </View>
             </ScrollView>
+
+            {/* Continue Blur zone */}
             <LinearGradient
              colors={[ 'rgba(255,255,255,0)', 'rgba(255, 255, 255, 0.7)', 'rgba(255,255,255,1)']}
-            //  end={{x:1,y:1}}
             style={styles.footer}>
                 <TouchableOpacity style={styles.continueReadBookDetailButton}>
                     <Text style={styles.continueReadBookDetailButtonLable}>Continue</Text>

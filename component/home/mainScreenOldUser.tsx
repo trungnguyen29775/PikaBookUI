@@ -9,9 +9,10 @@ const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 
-const MainScreenOldUser = ({navigation}: {navigation: any}) =>
+const MainScreenNewUser = ({navigation}: {navigation: any}) =>
 {
     return(
+        // nav bar
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.navBar}>
             <TouchableOpacity>
@@ -28,6 +29,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
         </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
+            {/* Find Book */}
             <View style={styles.findBookZone}>
                 <Text style={styles.zoneTitle}>Find Awesome Books!</Text>
                 <View style={styles.seachZone}>
@@ -43,6 +45,10 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                 </TouchableOpacity>
                 </View>
             </View>
+
+
+            {/* Continue Reading */}
+
             <View style={styles.continueReadingZone}>
                 <Text style={styles.zoneTitle}>Continue Reading</Text>
                 <View style={styles.lastBookContainer}>
@@ -50,6 +56,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     source={require('../../assets/book-poster2.jpg')}
                     style={styles.lastBookPoster}
                     />
+                    {/* Book Infomation (Name, author, chapter, progress reading) */}
                     <View style={styles.lastBook}>
                         <Icon name='bookmark-sharp' style={styles.bookMarkIcon}/>
                         <View style={styles.lastBookInfomation}>
@@ -66,6 +73,8 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                         <TouchableOpacity style={styles.lastBookButton}><Text style={styles.buttonLabel}>CONTINUE</Text></TouchableOpacity>
                     </View>
                 </View>
+
+                {/* slide list of book */}
                 <View style={styles.lisLastBookContainer}>
                     <View style={styles.listLastBook}>
                         <TouchableOpacity style={styles.listBook}></TouchableOpacity>
@@ -77,7 +86,10 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+
+            {/* Recommend Book  */}
             <View style={styles.mainRecommendBookContainer}>
+                {/* Header */}
                 <View style={styles.headerRecommendZone}>
                     <Text style={styles.zoneTitle}>Recommend for you</Text>
                     <TouchableOpacity>
@@ -85,6 +97,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
 
                     </TouchableOpacity>
                 </View>
+                {/* list book recommend */}
                 <ScrollView horizontal={true}>
                     
                     <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
@@ -111,9 +124,9 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     <AntDesign name='star' style={styles.starIcon}/>
                     <AntDesign name='staro'  style={styles.starIcon}/>
                     <AntDesign name='staro'style={styles.starIcon}/>
-
                     </View>
                     </TouchableOpacity>
+                    {/* Another book */}
                     <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
@@ -252,6 +265,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
                     
                 </ScrollView>
             </View>
+            {/* Recent Book but same like Recommend book, so I used the same style for it */}
             <View style={styles.mainRecommendBookContainer}>
                 <View style={styles.headerRecommendZone}>
                     <Text style={styles.zoneTitle}>Recent books</Text>
@@ -438,7 +452,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('NewUserChatScreen')}>
             <Icon name='chatbox' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
@@ -446,7 +460,7 @@ const MainScreenOldUser = ({navigation}: {navigation: any}) =>
             <Icon name='library' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
             <Icon name='notifications' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Notifications</Text>
             </TouchableOpacity>
@@ -790,4 +804,4 @@ const styles = StyleSheet.create
 )
    
 
-export default MainScreenOldUser;
+export default MainScreenNewUser;

@@ -3,10 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './component/login/login';
 import Register from './component/register/register';
-import MainScreenOldUser from './component/home/home';
+import MainScreenOldUser from './component/home/mainScreenOldUser';
+import MainScreenNewUser from './component/home/mainScreenNewUser';
 import BookDetails from './component/bookDetails/bookDetails';
 import ChatScreen from './component/chatScreen/chatScreen';
 import ChatRoom from './component/chatRoom/chatRoom';
+import NewUserChatScreen from './component/chatScreen/chatScreenNewUser';
+import Notifications from './component/notification/notifications';
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -43,6 +46,23 @@ export default function App() {
       component={ChatRoom} 
       options={{headerShown: false}}
        />
+        <Stack.Screen 
+      name="NewUserChatScreen" 
+      component={NewUserChatScreen} 
+      options={{headerShown: false}}
+       />
+         <Stack.Screen 
+      name="Notifications" 
+      component={Notifications} 
+      options={{headerShown: false}}
+       />
+        <Stack.Screen 
+      name="MainScreenNewUser" 
+      component={MainScreenNewUser} 
+      options={{headerShown: false}}
+       />
+       
+       
     </Stack.Navigator>
   </NavigationContainer>
   );

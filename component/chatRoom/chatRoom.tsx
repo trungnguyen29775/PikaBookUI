@@ -22,6 +22,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
       style={{flex:1}}
     >
         <View style={{flex: 1,backgroundColor:'rgba(246, 251, 255, 1)'}}>
+            {/* Nav bar */}
             <SafeAreaView style={styles.navBar}>
             <TouchableOpacity onPress={()=> navigation.navigate('ChatScreen')}>
             <AntDesign name='arrowleft' style={styles.navBarIcon}/>
@@ -36,8 +37,10 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                     />
             </TouchableOpacity>
         </SafeAreaView>
+        {/* Main */}
         <ScrollView>
         <View style={styles.mainScreenContainer}>
+            {/* Container of other user's avt, message */}
             <View style={styles.otherUserContainer}>
                 <View style={styles.avatarContainer}>
                 <Image
@@ -58,6 +61,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+
             <View style={styles.otherUserContainer}>
                 <View style={styles.avatarContainer}>
                 <Image
@@ -72,6 +76,8 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+
+            {/* Container of user's avt, message */}
             <View style={styles.UserContainer}>
                 <View style={styles.avatarContainer}>
                 <Image
@@ -100,6 +106,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+
             <View style={styles.otherUserContainer}>
                 <View style={styles.avatarContainer}>
                 <Image
@@ -114,6 +121,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                     </View>
                 </View>
             </View>
+
             <View style={styles.UserContainer}>
                 <View style={styles.avatarContainer}>
                 <Image
@@ -128,6 +136,7 @@ const ChatRoom = ({navigation}: {navigation: any}) =>
                 </View>
             </View>
         </View>
+        {/* on chating symbol */}
         <View style={styles.onChatingMessageContainer}>
             <View style={styles.onChatingMessage}>
                 <View style={styles.onchatMessageDot}></View>

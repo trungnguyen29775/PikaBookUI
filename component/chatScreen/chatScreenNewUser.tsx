@@ -9,12 +9,10 @@ const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)"
-const ChatScreen = ({navigation}: {navigation: any}) =>
+const NewUserChatScreen = ({navigation}: {navigation: any}) =>
 {
     return(
-        
         <View style={{flex: 1}}>
-            {/* nav bar */}
             <SafeAreaView style={styles.navBar}>
             <TouchableOpacity>
             <Icon name='menu' style={styles.navBarIcon}/>
@@ -29,9 +27,7 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
                     />
             </TouchableOpacity>
         </SafeAreaView>
-        {/* Content */}
         <ScrollView style={styles.mainScreenContainer}>
-        {/* Find book */}
         <View style={styles.findZone}>
                 <Text style={styles.zoneTitle}>Find Your Bookmates!</Text>
                 <View style={styles.seachZone}>
@@ -47,8 +43,6 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
                 </TouchableOpacity>
                 </View>
             </View>
-
-        {/* Pika matching */}
         <View style={styles.matchingContainer}>
             <View style={styles.headerMatchContainer}>
                 <Text style={styles.headerTitle}>Pika Match</Text>
@@ -58,13 +52,12 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
             </View>
             <TouchableOpacity style={styles.button}><Text style={styles.buttonLabel}>Auto Matching</Text></TouchableOpacity>
         </View>
-
-            {/* Group */}
         <View style={styles.groupsZoneContainer}>
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}>Your groups</Text>
                 <TouchableOpacity><Text style={styles.seeAll}>See Alls</Text></TouchableOpacity>
             </View>
+            
             <View style={styles.userGroupContainer}>
                 <TouchableOpacity style={styles.groupsContainer} onPress={()=> navigation.navigate('ChatRoom')}>
                     <Image
@@ -103,6 +96,7 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
         </View>
 
         {/* Other groups */}
+
         <View style={styles.groupsZoneContainer}>
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}>Other</Text>
@@ -146,7 +140,6 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
             
         </View>
         </ScrollView>
-
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
@@ -449,4 +442,4 @@ const styles = StyleSheet.create
 )
    
 
-export default ChatScreen;
+export default NewUserChatScreen;

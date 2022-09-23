@@ -63,7 +63,7 @@ const Register = ({navigation}: {navigation: any})=>
                     <Text style={styles.labelSocial}>Google</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.buttonSign} onPress={()=>{}}>
+            <TouchableOpacity style={styles.buttonSign} onPress={()=> navigation.navigate('MainScreenNewUser')}>
             <Text style={styles.buttonText}>Create account</Text>
             </TouchableOpacity>
             <View style={styles.footer}>
