@@ -6,7 +6,6 @@ import{FontAwesome5 as FontAwesome5} from '@expo/vector-icons'
 import{Octicons as Octicons} from '@expo/vector-icons'
 import{Entypo as Entypo} from '@expo/vector-icons'
 import{Feather as Feather} from '@expo/vector-icons'
-
 import { useState, useEffect} from 'react';
 import { padding } from 'polished';
 
@@ -17,19 +16,30 @@ const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)"
 const colorCoverBlank = "rgba(34, 83, 120, 0.35)"
+
+
+function CountWord(word:String)
+{
+    let count = word.split(" ");
+    return count.length-1;
+}
+
+
 const CreateNewBook = ({navigation}: {navigation: any}) =>
 {
+    const [wordCount,setWordCount] = useState(0)
+    
     return(
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.navBar}>
-            <TouchableOpacity onPress={()=> navigation.navigate('MainScreenOldUser')}>
+            <TouchableOpacity onPress={()=> navigation.navigate('WriteScreen')}>
                     <AntDesign name='arrowleft' style={styles.navBarBack}/>
                 </TouchableOpacity>
             <TouchableOpacity>
                 <Text style={styles.navTitle}>Create new book</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-            <Feather name='x' style={styles.navBarBack}/>
+            <TouchableOpacity onPress={()=> navigation.navigate('WriteScreen')}>
+            <Feather name='x' style={styles.navBarBack} />
             </TouchableOpacity>
         </SafeAreaView>
         {/* Main content */}
@@ -49,16 +59,32 @@ const CreateNewBook = ({navigation}: {navigation: any}) =>
                 <Text style={styles.headerTitle}>
                     Book title:
                 </Text>
-                <TextInput style={styles.inputTitleZone}>
+                <TextInput style={styles.inputTitleZone} 
+                    multiline={true} 
+                    >
 
                 </TextInput>
             </View>
             <View style={styles.inputContainer}>
                 <Text style={styles.headerTitle}>Book description:</Text>
                 <View style={styles.inputDescriptionZone}>
-                    <TextInput style={styles.inputContent}>
+                    <TextInput style={styles.inputContent} 
+                    multiline={true} 
+                    onChangeText={newText => setWordCount(CountWord(newText))}
+                    autoCorrect={false}
+                    >
 
                     </TextInput>
+                    <View style={styles.wordCountContainer}>
+                    <Text 
+                    style={{ 
+                    fontStyle:'italic',
+                    fontSize:13,
+                    marginTop:10,
+                    color: wordCount>200?'red':colorLabel}}>
+                        {wordCount}/200 words
+                    </Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.buttonContainer}>
@@ -180,12 +206,12 @@ const styles = StyleSheet.create
         inputTitleZone:
         {
             width:'100%',
-            height:50,
+      
             borderWidth:1.5,
             borderRadius:10,
             borderColor:colorNameGroup,
-            paddingTop:5,
-            paddingBottom:5,
+            paddingTop:8,
+            paddingBottom:8,
             paddingLeft:10,
             paddingRight:10,
             textAlign:'justify',
@@ -210,7 +236,16 @@ const styles = StyleSheet.create
             color:colorTitle,
             fontSize:16,
             fontWeight:'500',
+            height:'90%',
+            width:'100%',
             
+        },
+        wordCountContainer:
+        {
+            display:'flex',
+            alignItems:'flex-end',
+            height:'10%',
+            width:'100%'
         },
         buttonContainer:
         {
