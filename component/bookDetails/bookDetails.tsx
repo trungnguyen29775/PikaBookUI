@@ -14,6 +14,13 @@ const colorBackgroundBook = "rgba(224, 241, 255, 1)"
 const colorText = "rgba(78, 78, 78, 1)";
 const BookDetails = ({navigation}: {navigation: any}) =>
 {
+    const dataBook = 
+    {
+        title:'The sky above us',
+        author:'John Green',
+        chapters:25,
+        uri: require('../../assets/book-poster3.jpg')
+    }
     return(
         <View style={{flex:1}}>
             <SafeAreaView style={styles.navBar}>
@@ -32,17 +39,19 @@ const BookDetails = ({navigation}: {navigation: any}) =>
 
                 <View style={styles.bookContainer}>
                     <Image
-                    source={require('../../assets/book-poster3.jpg')}
+                    source={dataBook.uri}
                     style={styles.bookPoster}
                     />
                     <View style={styles.bookInfoContainer}>
                        <Text style={styles.bookTitle}>
-                            The sky above us
+                            {
+                                dataBook.title
+                            }
                         </Text>
-                        <Text style={styles.authorBook}>John Green</Text>
+                        <Text style={styles.authorBook}>{dataBook.author}</Text>
                         <View style={styles.chapterContainer}>
                             <Icon name='list' style={styles.chapterBookIcon}/>
-                            <Text style={styles.chapterBook}>25 chapters</Text>
+                            <Text style={styles.chapterBook}>{dataBook.chapters} chapters</Text>
                         </View>
                     </View>
 

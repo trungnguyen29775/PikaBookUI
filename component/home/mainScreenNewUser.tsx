@@ -11,6 +11,37 @@ const colorList = "rgba(177, 222, 255, 1)";
 
 const MainScreenNewUser = ({navigation}: {navigation: any}) =>
 {
+    const userData = 
+    {
+        avt: require('../../assets/avt.jpg')
+    }
+
+    const continueReadingBookData =
+    [
+        {
+            title:'The fault of us',
+            author:'John Red',
+            chapters:25,
+            uri: require('../../assets/book-poster2.jpg'),
+            process:'60%'
+        },
+        {
+            title:'The sky above us',
+            author:'John Green',
+            chapters:25,
+            uri: require('../../assets/book-poster3.jpg'),
+            process:'30%'
+        },
+        {
+            title:'The Kite',
+            author:'John Blue',
+            chapters:25,
+            uri: require('../../assets/book-poster.jpg'),
+            process:'75%'
+        },
+    ]
+
+
     return(
         // nav bar
         <View style={{flex: 1}}>
@@ -23,7 +54,7 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
             <TouchableOpacity>
             <Image 
-                    source={require('../../assets/avt.jpg')}
+                    source={userData.avt}
                     style={styles.avatar}
                     />
             </TouchableOpacity>

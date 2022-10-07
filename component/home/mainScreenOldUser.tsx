@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList,Dimensions  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 
@@ -8,9 +8,50 @@ const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
 const colorList = "rgba(177, 222, 255, 1)";
-
+const {width} = Dimensions.get('window');
+const colorPagingText = "rgba(177, 222, 255, 1)";
+const colorPagingTextActive = "rgba(35, 161, 255, 1)";
 const MainScreenNewUser = ({navigation}: {navigation: any}) =>
 {
+    const [active,setActive] = useState(0)
+    const change = ({nativeEvent}:{nativeEvent:any})=>
+    {
+        const slide = Math.ceil((nativeEvent.contentOffset.x/nativeEvent.layoutMeasurement.width))
+        if(slide!==active)
+            setActive(slide)
+    }
+
+    const userData = 
+    {
+        avt: require('../../assets/avt.jpg')
+    }
+
+    const continueReadingBookData =
+    [
+        {
+            title:'The fault of us',
+            author:'Red Bull',
+            chapters:25,
+            uri: require('../../assets/book-poster2.jpg'),
+            process:'70%'
+        },
+        {
+            title:'The sky above us',
+            author:'John Green',
+            chapters:30,
+            uri: require('../../assets/book-poster3.jpg'),
+            process:'30%'
+        },
+        {
+            title:'The Kite',
+            author:'Johnanthan',
+            chapters:45,
+            uri: require('../../assets/book-poster.jpg'),
+            process:'75%'
+        },
+    ]
+
+
     return(
         // nav bar
         <View style={{flex: 1}}>
@@ -23,7 +64,7 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
             <TouchableOpacity>
             <Image 
-                    source={require('../../assets/avt.jpg')}
+                    source={userData.avt}
                     style={styles.avatar}
                     />
             </TouchableOpacity>
@@ -51,39 +92,51 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
 
             <View style={styles.continueReadingZone}>
                 <Text style={styles.zoneTitle}>Continue Reading</Text>
-                <View style={styles.lastBookContainer}>
-                    <Image 
-                    source={require('../../assets/book-poster2.jpg')}
-                    style={styles.lastBookPoster}
-                    />
+                <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                onScroll={change}
+                >
+
+                    {
+                        continueReadingBookData.map((item,index)=>
+                        (
+                            <View style={styles.lastBookContainer}>
+                                 <Image 
+                                source={item.uri}
+                                style={styles.lastBookPoster}
+                                />
                     {/* Book Infomation (Name, author, chapter, progress reading) */}
-                    <View style={styles.lastBook}>
-                        <Icon name='bookmark-sharp' style={styles.bookMarkIcon}/>
-                        <View style={styles.lastBookInfomation}>
-                        <Text style={styles.bookTitle}>The fault in our star</Text>
-                        <Text style={styles.authorBook}>John Green</Text>
-                        <View style={styles.chapterContainer}>
-                        <Icon name='list'/>
-                        <Text style={styles.chapterBook}>25 chapters</Text>
-                        </View>
-                        </View>
-                        <View style={styles.progressReadZone}>
-                            <View style={styles.progressRead}></View>
-                        </View>
-                        <TouchableOpacity style={styles.lastBookButton}><Text style={styles.buttonLabel}>CONTINUE</Text></TouchableOpacity>
-                    </View>
-                </View>
+                            <View style={styles.lastBook}>
+                            <Icon name='bookmark-sharp' style={styles.bookMarkIcon}/>
+                            <View style={styles.lastBookInfomation}>
+                            <Text style={styles.bookTitle}>{item.title}</Text>
+                            <Text style={styles.authorBook}>{item.author}</Text>
+                            <View style={styles.chapterContainer}>
+                            <Icon name='list'/>
+                            <Text style={styles.chapterBook}>{item.chapters} chapters</Text>
+                            </View>
+                            </View>
+                            <View style={styles.progressReadZone}>
+                            <View style={[styles.progressRead,{width:item.process}]}></View>
+                            </View>
+                            <TouchableOpacity style={styles.lastBookButton}><Text style={styles.buttonLabel}>CONTINUE</Text></TouchableOpacity>
+                            </View>
+                            </View>
+                        )
+                        )
+                    }
+                </ScrollView>
 
                 {/* slide list of book */}
-                <View style={styles.lisLastBookContainer}>
-                    <View style={styles.listLastBook}>
-                        <TouchableOpacity style={styles.listBook}></TouchableOpacity>
-                        <TouchableOpacity style={styles.listBookActive}></TouchableOpacity>
-                        <TouchableOpacity style={styles.listBook}></TouchableOpacity>
-                        <TouchableOpacity style={styles.listBook}></TouchableOpacity>
-                        <TouchableOpacity style={styles.listBook}></TouchableOpacity>
-        
-                    </View>
+                <View style={styles.pagination}>
+                    {
+                        continueReadingBookData.map((i,k)=>
+                        (
+                            <Text key={k} style={k==active?styles.paginationTextActive: styles.paginationText}>⬤</Text>
+                        ))
+                    }
                 </View>
             </View>
 
@@ -559,15 +612,10 @@ const styles = StyleSheet.create
         {
             display:'flex',
             flexDirection:'row',
-            width:'100%',
+            width:width-40,
             height:220,
+            marginTop:20,
             alignItems:'center'
-        },
-        lisLastBookContainer:
-        {
-           width:'100%',
-           display:'flex',
-           alignItems:'center',
         },
         lastBookPoster:
         {
@@ -577,7 +625,7 @@ const styles = StyleSheet.create
         },
         lastBook:
         {
-            width:'63.5%',
+            width: width-140-40,
             padding:8,
             height:166,
             display:'flex',
@@ -640,7 +688,6 @@ const styles = StyleSheet.create
         },
         progressRead:
         {
-            width:'70%',
             backgroundColor:'rgba(34, 83, 120, 1)',
             height:'100%',
             borderTopLeftRadius:7,
@@ -661,28 +708,6 @@ const styles = StyleSheet.create
             fontSize:12,
             lineHeight:25,
             fontWeight:'600'
-        },
-        listLastBook:
-        {
-            height:10,
-            width:80,
-            display:'flex',
-            flexDirection:'row',
-            justifyContent:'space-around'
-        },
-        listBook:
-        {
-            height:8,
-            width:8,
-            backgroundColor:colorList,
-            borderRadius:4
-        },
-        listBookActive:
-        {
-            height:8,
-            width:8,
-            backgroundColor:colorTitle,
-            borderRadius:4
         },
         mainRecommendBookContainer:
         {
@@ -751,6 +776,25 @@ const styles = StyleSheet.create
             color:colorMark,
             marginRight:10,
             fontSize:15
+        },
+        pagination:
+        {
+            display:'flex',
+            flexDirection:'row',
+            width:'100%',
+            alignItems:'center',
+        },
+        paginationText:
+        {
+            color:colorPagingText,
+            fontSize:6,
+            marginRight:3
+        },
+        paginationTextActive:
+        {
+            color:colorPagingTextActive,
+            fontSize:6,
+            marginRight:3
         },
         //Footer
         footer:
