@@ -452,11 +452,11 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('NewUserChatScreen')}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
             <Icon name='chatbox' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('LibraryScreen')}>
             <Icon name='library' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>

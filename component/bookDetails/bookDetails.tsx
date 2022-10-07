@@ -83,7 +83,10 @@ const BookDetails = ({navigation}: {navigation: any}) =>
             <LinearGradient
              colors={[ 'rgba(255,255,255,0)', 'rgba(255, 255, 255, 0.7)', 'rgba(255,255,255,1)']}
             style={styles.footer}>
-                <TouchableOpacity style={styles.continueReadBookDetailButton}>
+                <TouchableOpacity 
+                style={styles.continueReadBookDetailButton} 
+                onPress={()=> navigation.navigate('ReaderContainer')}
+                >
                     <Text style={styles.continueReadBookDetailButtonLable}>Continue</Text>
                 </TouchableOpacity>
             </LinearGradient>
@@ -208,7 +211,8 @@ const styles = StyleSheet.create
         },
         descriptionContainer:
         {
-            width:'100%'
+            width:'100%',
+            paddingBottom:20
         },
         headerTitle:
         {

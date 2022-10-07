@@ -9,6 +9,7 @@ import{Feather as Feather} from '@expo/vector-icons'
 import { useState, useEffect} from 'react';
 import { padding } from 'polished';
 
+
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
@@ -72,6 +73,7 @@ const CreateNewBook = ({navigation}: {navigation: any}) =>
                     multiline={true} 
                     onChangeText={newText => setWordCount(CountWord(newText))}
                     autoCorrect={false}
+                    textAlignVertical={'top'}
                     >
 
                     </TextInput>
