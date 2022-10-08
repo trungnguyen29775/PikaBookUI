@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 
-import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
@@ -15,32 +14,6 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
     {
         avt: require('../../assets/avt.jpg')
     }
-
-    const continueReadingBookData =
-    [
-        {
-            title:'The fault of us',
-            author:'John Red',
-            chapters:25,
-            uri: require('../../assets/book-poster2.jpg'),
-            process:'60%'
-        },
-        {
-            title:'The sky above us',
-            author:'John Green',
-            chapters:25,
-            uri: require('../../assets/book-poster3.jpg'),
-            process:'30%'
-        },
-        {
-            title:'The Kite',
-            author:'John Blue',
-            chapters:25,
-            uri: require('../../assets/book-poster.jpg'),
-            process:'75%'
-        },
-    ]
-
 
     return(
         // nav bar
@@ -362,7 +335,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -673,7 +647,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {

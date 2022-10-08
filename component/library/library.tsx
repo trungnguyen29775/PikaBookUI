@@ -1,25 +1,62 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput,Dimensions, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
-
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
-
+const {width} = Dimensions.get('window');
+const colorPagingText = "rgba(177, 222, 255, 1)";
+const colorPagingTextActive = "rgba(35, 161, 255, 1)";
 const LibraryScreen = ({navigation}: {navigation: any}) =>
 {
+    const [active,setActive] = useState(0)
+    const change = ({nativeEvent}:{nativeEvent:any})=>
+    {
+        const slide = Math.ceil((nativeEvent.contentOffset.x/nativeEvent.layoutMeasurement.width))
+        if(slide!==active)
+            setActive(slide)
+    }
+
+    const userData = 
+    {
+        avt: require('../../assets/avt.jpg')
+    }
+
+    const continueReadingBookData =
+    [
+        {
+            title:'The fault of us',
+            author:'Red Bull',
+            chapters:25,
+            uri: require('../../assets/book-poster2.jpg'),
+            process:'70%'
+        },
+        {
+            title:'The sky above us',
+            author:'John Green',
+            chapters:30,
+            uri: require('../../assets/book-poster3.jpg'),
+            process:'30%'
+        },
+        {
+            title:'The Kite',
+            author:'Johnanthan',
+            chapters:45,
+            uri: require('../../assets/book-poster.jpg'),
+            process:'75%'
+        },
+    ]
     return(
         // nav bar
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.navBar}>
             <TouchableOpacity>
-            <Icon name='menu' style={styles.navBarIcon}/>
+            <AntDesign name='arrowleft' style={styles.navBarBack}/>
             </TouchableOpacity>
             <TouchableOpacity>
-                <Text style={styles.navTitle}>Home</Text>
+                <Text style={styles.navTitle}>Library</Text>
             </TouchableOpacity>
             <TouchableOpacity>
             <Image 
@@ -29,49 +66,57 @@ const LibraryScreen = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
         </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
-            {/* Find Book */}
-            <View style={styles.findBookZone}>
-                <Text style={styles.zoneTitle}>Find Awesome Books!</Text>
-                <View style={styles.seachZone}>
-                <TouchableOpacity>
-                <Icon name='search' size={20} color={colorLabel}/>
-                </TouchableOpacity>
-                <TextInput
-                placeholder='Search'
-                style={{fontStyle:'italic',width:'80%'}}
-                />
-                <TouchableOpacity>
-                <Icon name='options-outline' size={22} color={colorLabel}/>
-                </TouchableOpacity>
-                </View>
-            </View>
-
 
             {/* Continue Reading */}
 
             <View style={styles.continueReadingZone}>
                 <Text style={styles.zoneTitle}>Continue Reading</Text>
-                <View style={styles.lastBookContainer}>
-                    <Image 
-                    source={require('../../assets/book-poster2.jpg')}
-                    style={styles.lastBookPoster}
-                    />
+                <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                onScroll={change}
+                >
+
+                    {
+                        continueReadingBookData.map((item,index)=>
+                        (
+                            <View style={styles.lastBookContainer} key={index}>
+                                 <Image 
+                            
+                                source={item.uri}
+                                style={styles.lastBookPoster}
+                                />
                     {/* Book Infomation (Name, author, chapter, progress reading) */}
-                    <View style={styles.lastBook}>
-                        <Icon name='bookmark-sharp' style={styles.bookMarkIcon}/>
-                        <View style={styles.lastBookInfomation}>
-                        <Text style={styles.bookTitle}>The fault in our star</Text>
-                        <Text style={styles.authorBook}>John Green</Text>
-                        <View style={styles.chapterContainer}>
-                        <Icon name='list'/>
-                        <Text style={styles.chapterBook}>25 chapters</Text>
-                        </View>
-                        </View>
-                        <View style={styles.progressReadZone}>
-                            <View style={styles.progressRead}></View>
-                        </View>
-                        <TouchableOpacity style={styles.lastBookButton}><Text style={styles.buttonLabel}>CONTINUE</Text></TouchableOpacity>
-                    </View>
+                            <View style={styles.lastBook}>
+                            <Icon name='bookmark-sharp' style={styles.bookMarkIcon}/>
+                            <View style={styles.lastBookInfomation}>
+                            <Text style={styles.bookTitle}>{item.title}</Text>
+                            <Text style={styles.authorBook}>{item.author}</Text>
+                            <View style={styles.chapterContainer}>
+                            <Icon name='list'/>
+                            <Text style={styles.chapterBook}>{item.chapters} chapters</Text>
+                            </View>
+                            </View>
+                            <View style={styles.progressReadZone}>
+                            <View style={[styles.progressRead,{width:item.process}]}></View>
+                            </View>
+                            <TouchableOpacity style={styles.lastBookButton}><Text style={styles.buttonLabel}>CONTINUE</Text></TouchableOpacity>
+                            </View>
+                            </View>
+                        )
+                        )
+                    }
+                </ScrollView>
+
+                {/* slide list of book */}
+                <View style={styles.pagination}>
+                    {
+                        continueReadingBookData.map((i,k)=>
+                        (
+                            <Text key={k} style={k==active?styles.paginationTextActive: styles.paginationText}>⬤</Text>
+                        ))
+                    }
                 </View>
             </View>
 
@@ -87,14 +132,15 @@ const LibraryScreen = ({navigation}: {navigation: any}) =>
                 </View>
                 {/* list book offline */}
                 <View style={styles.offlineBookContainer}>
+                    
                     <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
                     source={require('../../assets/book-poster3.jpg')}
                     style={styles.lastBookPoster}
                     />
                     <View style={styles.libraryBookInfomation}>
-                    <Text style={styles.bookTitle}>The sky above us</Text>
-                    <Text style={styles.authorBook}>John Green</Text>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
                     </View>
                     </TouchableOpacity>
                     
@@ -104,36 +150,72 @@ const LibraryScreen = ({navigation}: {navigation: any}) =>
                     style={styles.lastBookPoster}
                     />
                     <View style={styles.libraryBookInfomation}>
-                    <Text style={styles.bookTitle}>The sky above us</Text>
-                    <Text style={styles.authorBook}>John Green</Text>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
                     </View>
                     </TouchableOpacity>
-                    {/* Another book */}
-                                                             
-                    
                 </View>
             </View>
-            {/* Recent Book but same like Recommend book, so I used the same style for it */}
+            {/* Online book */}
             <View>
                 <View style={styles.headerRecommendZone}>
                     <Text style={styles.zoneTitle}>Your Online book</Text>
                     <TouchableOpacity>
                     <Text style={styles.seeAll}>See All</Text>
-
                     </TouchableOpacity>
                 </View>
-                <ScrollView horizontal={true}>
+                <View style={styles.offlineBookContainer}>
                     
-                                                               
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.libraryBookInfomation}>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
+                    </View>
+                    </TouchableOpacity>
                     
-                </ScrollView>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.libraryBookInfomation}>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
+                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.libraryBookInfomation}>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
+                    </View>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.lastBookPoster}
+                    />
+                    <View style={styles.libraryBookInfomation}>
+                    <Text style={styles.bookTitleLibrary}>The sky above us</Text>
+                    <Text style={styles.authorBookLibrary}>John Green</Text>
+                    </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav}>
-            <Icon name='home-outline' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Home</Text>
+            <Icon name='home-outline' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
@@ -144,8 +226,8 @@ const LibraryScreen = ({navigation}: {navigation: any}) =>
             <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav}>
-            <Icon name='library' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Library</Text>
+            <Icon name='library' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Library</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
             <Icon name='notifications' style={styles.footerNavIcon}/>
@@ -172,16 +254,17 @@ const styles = StyleSheet.create
             elevation: 6,
             height:Platform.OS ==='ios'? 100:80,
         },
-        navBarIcon:
+        navBarBack:
         {
-            fontSize:23,
-            marginLeft:20,
-            color:colorTitle
+            fontSize:25,
+            color:colorTitle,
+            marginLeft:20
         },
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -241,20 +324,16 @@ const styles = StyleSheet.create
             flexDirection:'column',
             width:'100%',
             height:270,
+            marginBottom:10
         },
         lastBookContainer:
         {
             display:'flex',
             flexDirection:'row',
-            width:'100%',
+            width:width-40,
             height:220,
+            marginTop:20,
             alignItems:'center'
-        },
-        lisLastBookContainer:
-        {
-           width:'100%',
-           display:'flex',
-           alignItems:'center',
         },
         lastBookPoster:
         {
@@ -264,7 +343,7 @@ const styles = StyleSheet.create
         },
         lastBook:
         {
-            width:'63.5%',
+            width: width-140-40,
             padding:8,
             height:166,
             display:'flex',
@@ -327,7 +406,6 @@ const styles = StyleSheet.create
         },
         progressRead:
         {
-            width:'70%',
             backgroundColor:'rgba(34, 83, 120, 1)',
             height:'100%',
             borderTopLeftRadius:7,
@@ -375,11 +453,9 @@ const styles = StyleSheet.create
         },
         bookContainer:
         {
-            height:269.2,
-            width:180,
+            width:160,
             backgroundColor:'white',
-            padding:10,
-            paddingTop:20,
+            padding:15,
             shadowColor: "#000",
             shadowOffset: {
                 width: 0,
@@ -392,11 +468,46 @@ const styles = StyleSheet.create
             display:'flex',
             alignItems:'center',
             borderRadius:10,
+            marginBottom:16
+        },
+        bookTitleLibrary:{
+            fontSize:16,
+            fontWeight:'500'
+        },
+        authorBookLibrary:
+        {
+            color:colorLabel,
+            fontSize:13,
+            fontWeight:'500'
         },
         libraryBookInfomation:
         {
             display:'flex',
             width:'100%',
+            
+        },
+        
+        pagination:
+        {
+            height:10,
+            display:'flex',
+            flexDirection:'row',
+            alignItems:'center',
+            position:'absolute',
+            bottom:0,
+            right:'50%'
+        },
+        paginationText:
+        {
+            color:colorPagingText,
+            fontSize:6,
+            marginRight:3
+        },
+        paginationTextActive:
+        {
+            color:colorPagingTextActive,
+            fontSize:6,
+            marginRight:3
         },
         //Footer
         footer:
@@ -436,7 +547,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {

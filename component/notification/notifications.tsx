@@ -5,14 +5,61 @@ import {MaterialCommunityIcons as MaterialCommunityIcons} from '@expo/vector-ico
 import { useState, useEffect} from 'react';
 import { padding } from 'polished';
 
+const fontSizeDate = 10
+const fontSizeNotificationTitle = 13;
+
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
-const colorBorder = "rgba(200, 200, 200, 1)";
-const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
-const colorNameGroup = "rgba(34, 83, 120, 1)"
+const colorDate = "rgba(151, 151, 151, 1)";
+const colorNotificationText = "rgba(34, 83, 120, 1)";
+
 const Notifications = ({navigation}: {navigation: any}) =>
 {
+    const notificatioData = 
+    [
+        {
+            poster: require('../../assets/book-poster3.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster3.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster3.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster3.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+        {
+            poster: require('../../assets/book-poster.jpg'),
+            date:'07.09.2022',
+            title:'The author has updated chapter 13 for ',
+            bookTitle:'My Daily Life'
+        },
+    ]
     return(
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.navBar}>
@@ -30,54 +77,46 @@ const Notifications = ({navigation}: {navigation: any}) =>
             </TouchableOpacity>
         </SafeAreaView>
         <ScrollView style={styles.mainScreenContainer}>
-            <View style={styles.notificationContainer}>
+            
+            {
+                notificatioData.map((data,index)=>(
+                <View style={styles.notificationContainer} key={index}>
                 <Image
-                source={require('../../assets/book-poster3.jpg')}
+                source={data.poster}
                 style={styles.notificationPoster}/>
                 <View style={styles.notificationContentContainer}>
-                    <Text>07.09.2022</Text>
-                    <Text>The author has updated chapter 13 for </Text>
+                    <Text style={styles.dateNotificationContainer}>{data.date}</Text>
+                    <View style={styles.titleNotificationContainer}>
+                        <Text style={styles.titleNotification}>{data.title}
+                        <Text style={styles.titleNotificationHighlight}> "{data.bookTitle}" </Text>
+                        book!
+                         </Text>
+                    </View>
                 </View>
             </View>
-            <View style={styles.notificationContainer}>
-                <Image
-                source={require('../../assets/book-poster3.jpg')}
-                style={styles.notificationPoster}/>
-                <View style={styles.notificationContentContainer}>
-                    <Text>07.09.2022</Text>
-                    <Text>The author has updated chapter 13 for </Text>
-                </View>
-            </View>
-            <View style={styles.notificationContainer}>
-                <Image
-                source={require('../../assets/book-poster3.jpg')}
-                style={styles.notificationPoster}/>
-                <View style={styles.notificationContentContainer}>
-                    <Text>07.09.2022</Text>
-                    <Text>The author has updated chapter 13 for </Text>
-                </View>
-            </View>
-
+                ))
+            }
+            
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
-            <Icon name='home-outline' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Home</Text>
-            </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav}>
+            <Icon name='home-outline' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Home</Text>
+            </TouchableOpacity >
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
-            <Icon name='chatbox' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Chat</Text>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
+            <Icon name='chatbox' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('LibraryScreen')}>
             <Icon name='library' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
             <Icon name='notifications' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Notifications</Text>
             </TouchableOpacity>
@@ -111,7 +150,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -136,22 +176,60 @@ const styles = StyleSheet.create
             width:'100%',
             borderBottomWidth:2,
             borderBottomColor:'rgba(34, 83, 120, 0.35)',
-            padding:30,
-            paddingBottom:20,
-            height:200
+            padding:20,
+            paddingTop:30,
+            height:175,
+            justifyContent:'space-between',
+            alignItems:'center'
         },
         notificationPoster:
         {
-            height:140,
-            width:108.8,
-            marginBottom:15
+            height:113.4,
+            width:88.128,
+            marginRight:10
         },
         notificationContentContainer:
         {
             display:'flex',
             flexDirection:'column',
-            alignItems:'center'
+            width:'73%',
+            height:'100%',
+            paddingTop:5
         },
+        dateNotificationContainer:
+        {
+            width:'100%',
+            fontSize:fontSizeDate,
+            color: colorDate,
+            fontWeight:'600',
+            fontStyle:'italic'
+        },
+        titleNotificationContainer:
+        {
+            display:'flex',
+            flexDirection:'row',
+            flexWrap:'wrap',
+            
+        },
+        titleNotification:
+        {
+            color: colorNotificationText,
+            fontSize:fontSizeNotificationTitle,
+            fontWeight:'600',
+            display:'flex',
+            flexWrap:'wrap'
+        },
+        titleNotificationHighlightContainer:
+        {
+        
+        },
+        titleNotificationHighlight:
+        {
+            fontSize:fontSizeNotificationTitle,
+            color:colorTitle,
+            fontWeight:'500',
+        },
+
         //Footer
         footer:
         {
@@ -190,7 +268,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {

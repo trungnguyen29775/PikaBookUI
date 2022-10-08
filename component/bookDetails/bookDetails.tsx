@@ -1,15 +1,22 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { rgba } from 'polished'
-import { useState, useEffect} from 'react';
+
+const fontSizeAuthor = 16;
+const fontSizeTitle = 25;
+const fontSizeChapter = 13;
+const fontSizeBookIcon = 15;
+const fontSizeInteractionIcon = 28;
+const fontSizeIconTitle = 13;
+const fontSizeHeader = 20;
+const fontSizeDescriptionText = 18;
+
+
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
-const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
 const colorBackgroundBook = "rgba(224, 241, 255, 1)"
 const colorText = "rgba(78, 78, 78, 1)";
 const BookDetails = ({navigation}: {navigation: any}) =>
@@ -19,7 +26,9 @@ const BookDetails = ({navigation}: {navigation: any}) =>
         title:'The sky above us',
         author:'John Green',
         chapters:25,
-        uri: require('../../assets/book-poster3.jpg')
+        uri: require('../../assets/book-poster3.jpg'),
+        add:true,
+        vote:true
     }
     return(
         <View style={{flex:1}}>
@@ -168,13 +177,13 @@ const styles = StyleSheet.create
         },
         bookTitle:
         {
-            fontSize:25,
+            fontSize:fontSizeTitle,
             fontWeight:'600'
         },
         authorBook:
         {
             color:colorLabel,
-            fontSize:16,
+            fontSize:fontSizeAuthor,
             fontWeight:'600'
         },
         chapterContainer:
@@ -185,11 +194,11 @@ const styles = StyleSheet.create
         },
         chapterBook:
         {
-            fontSize:13,
+            fontSize:fontSizeChapter,
             marginLeft:2
         },
         chapterBookIcon:{
-            fontSize:15
+            fontSize:fontSizeBookIcon
         },
         bookInteraction:{
             width:'70%',
@@ -206,7 +215,7 @@ const styles = StyleSheet.create
         },
         interactionIcon:
         {
-            fontSize:28,
+            fontSize:fontSizeInteractionIcon,
             color:colorTitle
         },
         iconStar:{
@@ -216,7 +225,7 @@ const styles = StyleSheet.create
         iconTitle:
         {
             color:colorTitle,
-            fontSize:13
+            fontSize:fontSizeIconTitle
         },
         descriptionContainer:
         {
@@ -226,7 +235,7 @@ const styles = StyleSheet.create
         headerTitle:
         {
             color:colorTitle,
-            fontSize:20,
+            fontSize:fontSizeHeader,
             textDecorationLine:'underline',
             fontWeight:'600'
         },
@@ -237,7 +246,7 @@ const styles = StyleSheet.create
             marginBottom:45
         },
         descriptionText:{
-            fontSize:18,
+            fontSize:fontSizeDescriptionText,
             color:colorText,
             textAlign:'justify'
         },

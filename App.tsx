@@ -13,7 +13,6 @@ import Notifications from './component/notification/notifications';
 import WriteScreenBlank from './component/write/writeScreenBlank';
 import WriteScreen from './component/write/writeScreen';
 import CreateNewBook from './component/write/createNewBook';
-import BookDetailsOnClick from './component/bookDetails/bookDetailsOnClick';
 import SplashScreen from './component/splashScreen/splashSceen';
 import LibraryScreen from './component/library/library';
 import ReaderContainer from './component/reading/reading';
@@ -83,11 +82,7 @@ export default function App() {
       component={CreateNewBook} 
       options={{headerShown: false}}
        />
-       <Stack.Screen 
-      name="BookDetailsOnClick" 
-      component={BookDetailsOnClick} 
-      options={{headerShown: false}}
-       />
+      
        <Stack.Screen 
       name="SplashScreen" 
       component={SplashScreen} 

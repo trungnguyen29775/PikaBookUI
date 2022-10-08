@@ -12,7 +12,7 @@ const Register = ({navigation}: {navigation: any})=>
     return(
         <SafeAreaView style={styles.signContainer}>
             <Image 
-            source={require('../../assets/logo.jpg')} 
+            source={require('../../assets/logo-pika.png')} 
             style={styles.logo}/>
             <Text style={styles.welcomeText}>Wellcome to Pikabook!</Text>
             <View style={styles.inputContainer}>

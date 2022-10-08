@@ -62,23 +62,23 @@ const WriteScreen = ({navigation}: {navigation: any}) =>
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
-            <Icon name='home-outline' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Home</Text>
+            <TouchableOpacity style={styles.footerNav}>
+            <Icon name='home-outline' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Home</Text>
             </TouchableOpacity >
-            <TouchableOpacity style={styles.footerNav}>
-            <Icon name='pencil' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Write</Text>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
+            <Icon name='pencil' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
             <Icon name='chatbox' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('LibraryScreen')}>
             <Icon name='library' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
             <Icon name='notifications' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Notifications</Text>
             </TouchableOpacity>
@@ -112,7 +112,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -252,7 +253,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {

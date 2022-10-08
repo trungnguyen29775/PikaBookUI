@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList,KeyboardAvoidingView  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView,KeyboardAvoidingView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 import {MaterialCommunityIcons as MaterialCommunityIcons} from '@expo/vector-icons'
@@ -8,8 +8,6 @@ import { useState, useEffect} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
-const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)";
 const colorOtherUserMessage="rgba(177, 222, 255, 1)";
 const colorUserMessage="rgba(103, 189, 254, 1)";
@@ -195,7 +193,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avtGroup:
         {

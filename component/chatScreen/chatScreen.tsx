@@ -1,13 +1,22 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 import {MaterialCommunityIcons as MaterialCommunityIcons} from '@expo/vector-icons'
-import { useState, useEffect} from 'react';
+
+const fontSizeHeaderTitle = 18;
+const fontSizeZoneTitle = 24;
+const fontSizeTitleIcon = 13;
+const fontSizeSeeAll = 12;
+const fontSizeNameGroup = 15;
+const fontSizeGroupCheckIcon = 13;
+const fontSizeTextStatus = 13;
+const fontSizeJoinGroupButtonText = 9;
+
+
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
 const colorNameGroup = "rgba(34, 83, 120, 1)"
 const ChatScreen = ({navigation}: {navigation: any}) =>
 {
@@ -149,23 +158,23 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
 
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
-            <Icon name='home-outline' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Home</Text>
+            <TouchableOpacity style={styles.footerNav}>
+            <Icon name='home-outline' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
-            <Icon name='chatbox' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Chat</Text>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
+            <Icon name='chatbox' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle}>Chat</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('LibraryScreen')}>
             <Icon name='library' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.footerNav}>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
             <Icon name='notifications' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle}>Notifications</Text>
             </TouchableOpacity>
@@ -199,7 +208,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -220,7 +230,7 @@ const styles = StyleSheet.create
         headerTitle:
         {
             color:colorTitle,
-            fontSize:18,
+            fontSize:fontSizeHeaderTitle,
             textDecorationLine:'underline',
             fontWeight:'700',
             
@@ -235,7 +245,7 @@ const styles = StyleSheet.create
         zoneTitle:
         {
             color:colorTitle,
-            fontSize:24,
+            fontSize:fontSizeZoneTitle,
             fontWeight:'700',
         },
         seachZone:
@@ -273,7 +283,7 @@ const styles = StyleSheet.create
         titleIcon:{
             color:colorMark,
             marginLeft:5,
-            fontSize:13,
+            fontSize:fontSizeTitleIcon,
             
         },
         button:
@@ -311,7 +321,7 @@ const styles = StyleSheet.create
         seeAll:
         {
             color:colorTitle,
-            fontSize:12,
+            fontSize:fontSizeSeeAll,
             fontWeight:'600'
         },
         userGroupContainer:
@@ -362,7 +372,7 @@ const styles = StyleSheet.create
         nameOfGroup:
         {
             color:colorNameGroup,
-            fontSize:15,
+            fontSize:fontSizeNameGroup,
             fontWeight:'700',
             marginBottom:5
         },
@@ -371,12 +381,12 @@ const styles = StyleSheet.create
             marginBottom:5,
             color:colorMark,
             marginLeft:5,
-            fontSize:13,
+            fontSize:fontSizeGroupCheckIcon,
         },
 
         textStatusGroup:
         {
-            fontSize:13,
+            fontSize:fontSizeTextStatus,
             color:colorLabel,
             fontStyle:'italic',
             width:'100%'
@@ -394,7 +404,7 @@ const styles = StyleSheet.create
         joinGroupText:
         {
             color:'white',
-            fontSize:9,
+            fontSize:fontSizeJoinGroupButtonText,
             lineHeight:18
         },
         //Footer
@@ -435,7 +445,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {

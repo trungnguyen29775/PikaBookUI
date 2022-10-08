@@ -1,13 +1,12 @@
-import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView, FlatList,SectionList,Dimensions  } from 'react-native';
+import { StyleSheet, Text, View,Image,TextInput, StatusBar,  Platform,TouchableOpacity,ScrollView,SafeAreaView,Dimensions  } from 'react-native';
 import {Ionicons as Icon} from '@expo/vector-icons'
 import {AntDesign as AntDesign} from '@expo/vector-icons'
 
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 const colorTitle  = "rgba(35, 161, 255, 1)";
 const colorLabel = "rgba(151, 151, 151, 1)";
 const colorBorder = "rgba(200, 200, 200, 1)";
 const colorMark = "rgba(251, 188, 5, 1)";
-const colorList = "rgba(177, 222, 255, 1)";
 const {width} = Dimensions.get('window');
 const colorPagingText = "rgba(177, 222, 255, 1)";
 const colorPagingTextActive = "rgba(35, 161, 255, 1)";
@@ -102,8 +101,9 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
                     {
                         continueReadingBookData.map((item,index)=>
                         (
-                            <View style={styles.lastBookContainer}>
+                            <View style={styles.lastBookContainer} key={index}>
                                  <Image 
+                            
                                 source={item.uri}
                                 style={styles.lastBookPoster}
                                 />
@@ -151,7 +151,10 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
                     </TouchableOpacity>
                 </View>
                 {/* list book recommend */}
-                <ScrollView horizontal={true}>
+                <ScrollView 
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                >
                     
                     <TouchableOpacity style={styles.bookContainer} onPress={()=> navigation.navigate('BookDetails')}>
                     <Image
@@ -327,7 +330,11 @@ const MainScreenNewUser = ({navigation}: {navigation: any}) =>
 
                     </TouchableOpacity>
                 </View>
-                <ScrollView horizontal={true}>
+                <ScrollView 
+                horizontal={true} 
+                showsHorizontalScrollIndicator={false}
+
+                >
                     
                     <TouchableOpacity style={styles.bookContainer}>
                     <Image
@@ -547,7 +554,8 @@ const styles = StyleSheet.create
         navTitle:
         {
             color:colorTitle,
-            fontSize:15
+            fontSize:15,
+            fontWeight:'600'
         },
         avatar:
         {
@@ -607,6 +615,7 @@ const styles = StyleSheet.create
             flexDirection:'column',
             width:'100%',
             height:270,
+            marginBottom:10
         },
         lastBookContainer:
         {
@@ -779,10 +788,13 @@ const styles = StyleSheet.create
         },
         pagination:
         {
+            height:10,
             display:'flex',
             flexDirection:'row',
-            width:'100%',
             alignItems:'center',
+            position:'absolute',
+            bottom:0,
+            right:'50%'
         },
         paginationText:
         {
@@ -834,7 +846,6 @@ const styles = StyleSheet.create
             fontSize:20,
             color:colorTitle,
             textDecorationColor:colorTitle,
-            textDecorationLine:'underline'
         },
         footerNavTitleActive:
         {
