@@ -101,12 +101,12 @@ const CreateNewBook = ({navigation}: {navigation: any}) =>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
             <TouchableOpacity style={styles.footerNav}>
-            <Icon name='home-outline' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Home</Text>
+            <Icon name='home-outline' style={styles.footerNavIcon} onPress={()=> navigation.navigate('MainScreenOldUser')}/>
+            <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
-            <Icon name='pencil' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle} >Write</Text>
+            <Icon name='pencil' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive} >Write</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
             <Icon name='chatbox' style={styles.footerNavIcon}/>

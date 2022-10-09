@@ -21,10 +21,52 @@ const colorText = "rgba(78, 78, 78, 1)"
 
 
 const ReaderContainer= ({navigation}: {navigation: any})=>{
+
+    const data = {
+        chapters:10,
+        poster: require('../../assets/book-poster3.jpg'),
+        author: 'The sky above us',
+    }
     const { width } = useWindowDimensions();
     const [showBar, setShowBar] = useState(true)
-
+    const [menuContainerState, setMenuContainerState] = useState(false)
     const heightNav = useRef(new Animated.Value(Platform.OS === 'ios' ? 100 : 80)).current
+    const heightFoot = useRef(new Animated.Value(Platform.OS === 'ios' ? 70 : 60)).current
+    const widthMenu = useRef(new Animated.Value(160)).current
+    
+    const handelShowMenu = ()=>
+    {
+        showMenu()
+        setMenuContainerState(true)
+        hideFootBar()
+        
+    }
+
+    const handleHideMenu = ()=>
+    {
+        hideMenu()
+        setMenuContainerState(false)
+        showFootBar()
+    }
+
+    function hideMenu()
+    {
+        Animated.timing(widthMenu,{
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false
+        }).start()
+    }
+
+    function showMenu()
+    {
+        Animated.timing(widthMenu,{
+            toValue: width*0.7,
+            duration: 300,
+            useNativeDriver: false
+        }).start()
+    }
+
     function hideNavBar()
     {
         
@@ -45,7 +87,6 @@ const ReaderContainer= ({navigation}: {navigation: any})=>{
         }).start()
     }
 
-    const heightFoot = useRef(new Animated.Value(Platform.OS === 'ios' ? 70 : 60)).current
     function hideFootBar()
     {
         
@@ -79,6 +120,7 @@ const ReaderContainer= ({navigation}: {navigation: any})=>{
             setShowBar(!showBar)
             showNavBar() 
             showFootBar()
+            
         }
     }
 
@@ -86,10 +128,48 @@ const ReaderContainer= ({navigation}: {navigation: any})=>{
 
     return (
         <View style={{flex:1}}>
+            {/* Menu */}
+            <TouchableOpacity
+            style={[styles.menuContainer,{display: menuContainerState?'flex':'none'}]}
+            onPress={handleHideMenu}
+            >
+                <Animated.View style={[styles.menu,{width:widthMenu}]}
+                 onStartShouldSetResponder={(event) => true}
+                 onTouchEnd={(e) => {
+                   e.stopPropagation();
+                 }}
+                >
+                <View style={styles.headerMenu}>
+                    <Image
+                    source={require('../../assets/book-poster3.jpg')}
+                    style={styles.bookPoster}
+                    />
+                    <View style={styles.bookInfomationCotainer}>
+                        <Text style={styles.bookTitle}>The sky above us</Text>
+                        <Text style={styles.bookAuthor}>John Green</Text>
+                    </View>
+                </View>
+                <ScrollView style={styles.chapterContainer}
+                showsVerticalScrollIndicator={false}
+                pagingEnabled
+                >
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                    <TouchableOpacity><Text style={styles.chapter}>Chapter 1</Text></TouchableOpacity>
+                </ScrollView>
+                </Animated.View>
+            </TouchableOpacity>
 
-           
             {/* nav bar */}
-            <View style={{height:'100%', width:'100%'}}>
+            <View style={{height:'100%',width:'100%',zIndex:1}}>
             <Animated.View style={[styles.navBar,{height:heightNav}]}>
                 <TouchableOpacity onPress={()=> navigation.navigate('BookDetails')}>
                     <AntDesign name='arrowleft' style={styles.navBarIcon}/>
@@ -97,11 +177,16 @@ const ReaderContainer= ({navigation}: {navigation: any})=>{
                 <TouchableOpacity>
                     <Text style={styles.navTitle}>Chapter 1</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                onPress={handelShowMenu}
+                >
                 <Icon name='menu' style={styles.navBarIcon}/>
+                </TouchableOpacity>
             </Animated.View>
 
             <ScrollView
             style={styles.scrollContainer}
+            showsVerticalScrollIndicator={false}
             >
             <TouchableOpacity
             activeOpacity={1}
@@ -176,7 +261,7 @@ const styles = StyleSheet.create
             backgroundColor:'rgba(246, 251, 255, 1)',
             alignItems:'center',
             paddingTop: Platform.OS ==='ios'? 30:  StatusBar.currentHeight,
-           
+            
             borderWidth:0.2,
             elevation: 6,
         },
@@ -223,10 +308,67 @@ const styles = StyleSheet.create
         },
         menuContainer:
         {
-            flex:1,
+            height:'100%',
+            width:'100%',
             position:'absolute',
-            backgroundColor:'black',
+            backgroundColor:'rgba(34, 83, 120, 0.35)',
+            zIndex:2,
+            display:'flex',
+            flexDirection:'row-reverse',
+        },
+        menu:{
+            height:'100%',
+            backgroundColor:'rgba(246, 251, 255, 1)',
+        },
 
+        headerMenu:
+        {
+            
+            paddingTop:Platform.OS === 'ios'?50:StatusBar.currentHeight,
+            display:'flex',
+            alignItems:'center',
+            paddingBottom:20,
+            borderBottomWidth:2,
+            borderBottomColor:'rgba(34, 83, 120, 0.35)'
+        },
+        bookPoster:
+        {
+            width:154,
+            height:197,
+            marginTop:Platform.OS === 'ios'? 0: 10,
+        },
+        bookInfomationCotainer:
+        {
+            display:'flex',
+            marginTop:10,
+            width:'100%',
+            alignItems:'center'
+        },
+        bookTitle:
+        {
+            color:'black',
+            fontWeight:'700',
+            fontSize:18
+        },
+        bookAuthor:
+        {
+            color:colorLabel,
+            fontSize:13,
+            fontWeight:'500'
+        },
+        chapterContainer:
+        {
+            display:'flex',
+            flexDirection:'column',
+            padding:20,
+            width:'100%'
+        },
+        chapter:
+        {
+            color:'rgba(34, 83, 120, 1)',
+            fontSize:13,
+            fontWeight:'600',
+            marginBottom:20
         },
          //Footer
          footer:

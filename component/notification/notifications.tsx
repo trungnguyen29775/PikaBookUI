@@ -100,9 +100,9 @@ const Notifications = ({navigation}: {navigation: any}) =>
         </ScrollView>
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav}>
-            <Icon name='home-outline' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Home</Text>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
+            <Icon name='home-outline' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
@@ -117,8 +117,8 @@ const Notifications = ({navigation}: {navigation: any}) =>
             <Text style={styles.footerNavTitle}>Library</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('Notifications')}>
-            <Icon name='notifications' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Notifications</Text>
+            <Icon name='notifications' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Notifications</Text>
             </TouchableOpacity>
         </SafeAreaView>
       </View>

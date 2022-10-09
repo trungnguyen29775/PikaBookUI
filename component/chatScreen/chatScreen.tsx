@@ -158,17 +158,17 @@ const ChatScreen = ({navigation}: {navigation: any}) =>
 
         {/* Footer */}
         <SafeAreaView style={styles.footer}>
-            <TouchableOpacity style={styles.footerNav}>
-            <Icon name='home-outline' style={styles.footerNavIconActive}/>
-            <Text style={styles.footerNavTitleActive}>Home</Text>
+            <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('MainScreenOldUser')}>
+            <Icon name='home-outline' style={styles.footerNavIcon}/>
+            <Text style={styles.footerNavTitle}>Home</Text>
             </TouchableOpacity >
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('WriteScreen')}>
             <Icon name='pencil' style={styles.footerNavIcon}/>
             <Text style={styles.footerNavTitle} >Write</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('ChatScreen')}>
-            <Icon name='chatbox' style={styles.footerNavIcon}/>
-            <Text style={styles.footerNavTitle}>Chat</Text>
+            <Icon name='chatbox' style={styles.footerNavIconActive}/>
+            <Text style={styles.footerNavTitleActive}>Chat</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.footerNav} onPress={()=> navigation.navigate('LibraryScreen')}>
             <Icon name='library' style={styles.footerNavIcon}/>
